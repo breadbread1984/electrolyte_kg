@@ -62,4 +62,9 @@ match (a: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26"}),
       (b: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"})
 merge (a)-[r:NEXT]->(b);
 
+merge (c: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27", type: "schlenk bottle", volume: 50, unit: "ml", target: "c2"}) return c;
+merge (a: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"}),
+      (b: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27"})
+merge (a)-[r:NEXT]->(b);
+
 
