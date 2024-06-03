@@ -82,7 +82,7 @@ match (a: Purify {id: "14d3e92e-2189-11ef-afd8-936ec9651bf8"}),
       (b: Dry {id: "f5f271aa-2189-11ef-8d9a-7319481d758f"})
 merge (a)-[r:NEXT]->(b);
 
-merge (d: Device {id: "01555998-218c-11ef-b203-dfb9eb484c1c", device: "XRD", target: "c2", params: "{\"materials\":"Li:S:P:Br:I", \"proportion\": \"1.400:1.600:0.400:0.100:0.100\"}"}) return d;
+merge (d: Device {id: "01555998-218c-11ef-b203-dfb9eb484c1c", device: "XRD", target: "c2", params: "{\"materials\":\"Li:S:P:Br:I\", \"proportion\": \"1.400:1.600:0.400:0.100:0.100\"}"}) return d;
 match (a: Dry {id: "f5f271aa-2189-11ef-8d9a-7319481d758f"}),
       (b: Device {id: "01555998-218c-11ef-b203-dfb9eb484c1c"})
 merge (a)-[r:NEXT]->(b);
