@@ -49,7 +49,7 @@ match (a: `Material Preparation` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"}),
       (b: Material {id: "fdec2a96-217e-11ef-9770-9b85617e399b"})
 merge (a)-[r:USES]->(b);
 
-merge (d: `Planetary Ball Mill` {id: "34b0fc22-2180-11ef-8268-f76426304c26", target: "c1", rpm: 500, seconds: 144000})
+merge (d: `Planetary Ball Mill` {id: "34b0fc22-2180-11ef-8268-f76426304c26", target: "c1", rpm: 500, seconds: 144000}) return d;
 match (a: `Material Preparation` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"}),
       (b: `Planetary Ball Mill` {id: "34b0fc22-2180-11ef-8268-f76426304c26"})
 merge (a)-[r:NEXT]->(b);
