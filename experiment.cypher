@@ -2,11 +2,11 @@ drop database experiments;
 create database experiments;
 use experiments;
 
-merge (c: `Container Add` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "planetary ball mill zirconia", volume: 45, unit: "cc", target: "c1"}) return c;
+merge (c: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "planetary ball mill zirconia", volume: 45, unit: "cc", target: "c1"}) return c;
 
 merge (m: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f", amount: "0.661", unit: "g", target: "c1"}) return m;
 merge (m: Material {id: "8a65bc10-2177-11ef-b484-e7295e4bd850", smiles: "[Li+].[Li+].[S-2]"}) return m;
-match (a: `Container Add` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070"}),
+match (a: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070"}),
       (b: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f"})
 merge (a)-[r:NEXT]->(b);
 match (a: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f"}),
