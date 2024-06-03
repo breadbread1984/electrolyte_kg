@@ -54,4 +54,12 @@ match (a: `Material Preparation` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"}),
       (b: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26"})
 merge (a)-[r:NEXT]->(b);
 
+merge (m: `Material Preparation` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b", amount: "20", unit: "ml", target: "c1"}) return m;
+match (a: `Material Preparation` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"}),
+      (b: Material {id: "fdec2a96-217e-11ef-9770-9b85617e399b"})
+merge (a)-[r:USES]->(b);
+match (a: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26"}),
+      (b: `Material Preparation` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"})
+merge (a)-[r:USES]->(b);
+
 
