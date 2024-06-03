@@ -49,7 +49,7 @@ match (a: `Material Add` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"}),
       (b: Material {id: "fdec2a96-217e-11ef-9770-9b85617e399b"})
 merge (a)-[r:USES]->(b);
 
-merge (d: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26", device: "planetary ball mill", target: "c1", params: "{rpm: 500, seconds: 144000}"}) return d;
+merge (d: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26", device: "planetary ball mill", target: "c1", params: "{\"rpm\": 500, \"seconds\": 144000}"}) return d;
 match (a: `Material Add` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"}),
       (b: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26"})
 merge (a)-[r:NEXT]->(b);
@@ -63,8 +63,18 @@ match (a: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26"}),
 merge (a)-[r:NEXT]->(b);
 
 merge (c: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27", type: "schlenk bottle", volume: 50, unit: "ml", target: "c2"}) return c;
-merge (a: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"}),
+match (a: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"}),
       (b: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27"})
 merge (a)-[r:NEXT]->(b);
 
+merge (c: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976", source: "c1", target: "c2"}) return c;
+match (a: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27"}),
+      (b: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976"})
+merge (a)-[r:NEXT]->(b);
 
+merge (c: Purify {id: "14d3e92e-2189-11ef-afd8-936ec9651bf8", target: "c2", method: "precipitation", params: "{\"remove\": \"supernatant solvent\"}"}) return c;
+match (a: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976"}),
+      (b: Purify {id: "14d3e92e-2189-11ef-afd8-936ec9651bf8"})
+merge (a)-[r:NEXT]->(b);
+
+merge (d: Device {id: "f5f271aa-2189-11ef-8d9a-7319481d758f", device: "oil bath", target: "c2", params: "{\"temperature\": 100}"}) return d;
