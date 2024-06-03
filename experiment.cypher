@@ -40,7 +40,7 @@ match (a: `Material Preparation` {id: "58352e26-217a-11ef-bfbf-c32be4f1b178"}),
       (b: Material {id: "6ed45d82-217a-11ef-97ac-8b75c2fa7dfb"})
 merge (a)-[r:USES]->(b);
 
-merge (m: `Material Preparation` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae", amount "4", unit: "g", target": "c1"}) return m;
+merge (m: `Material Preparation` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae", amount: "4", unit: "g", target": "c1"}) return m;
 merge (m: Material {id: "fdec2a96-217e-11ef-9770-9b85617e399b", smiles: "c1ccccc1Cl"}) return m;
 match (a: `Material Preparation` {id: "58352e26-217a-11ef-bfbf-c32be4f1b178"}),
       (b: `Material Preparation` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"})
