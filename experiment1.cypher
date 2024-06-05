@@ -102,7 +102,7 @@ match (a: Solidify {id: "e9648b98-22de-11ef-b116-bf33c525c8ec"}),
       (b: Device {id: "84905356-22e2-11ef-90ea-3b47e8ea889b"})
 merge (a)-[r:NEXT]->(b);
 
-merge (e: Experiment {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"});
+merge (e: Experiment {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0", first_step: "129fe9b8-2176-11ef-8ccd-6f653867f070", last_step: "84905356-22e2-11ef-90ea-3b47e8ea889b"});
 match (a {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"}),
       (b {id: "129fe9b8-2176-11ef-8ccd-6f653867f070"})
 merge (a)-[r:INCLUDE_STEP]->(b);
