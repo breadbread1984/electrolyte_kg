@@ -39,3 +39,9 @@ match (a: `Material Add` {id: "1a8925a0-2305-11ef-b5fd-0780816f3b84"}),
       (b: Material {smiles: "S1SSSSSSS1"})
 merge (a)-[:USES]->(b);
 
+merge (d: Device {id: "d21ffb34-2306-11ef-9431-8720195367ce", device: "planetary ball mill", target: "c1", params: "{\"rpm\": 370, \"seconds\": 90000}"}) return d;
+match (a: `Material Add` {id: "1a8925a0-2305-11ef-b5fd-0780816f3b84"}),
+      (b: Device {id: "d21ffb34-2306-11ef-9431-8720195367ce"})
+merge (a)-[:NEXT]->(b);
+
+
