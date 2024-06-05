@@ -1,5 +1,4 @@
-drop database experiments;
-create database experiments;
+create database experiments if not exists;
 use experiments;
 
 merge (c: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "planetary ball mill zirconia", volume: 45, unit: "cc", target: "c1"}) return c;
