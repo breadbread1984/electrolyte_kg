@@ -8,7 +8,7 @@ merge (m: Material {smiles: "[Li+].[Li+].[S-2]"}) return m;
 match (a: `Container Preparation` {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016"}),
       (b: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"})
 merge (a)-[:NEXT]->(b);
-match (a: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"})
+match (a: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"}),
       (b: Material {smiles: "[Li+].[Li+].[S-2]"})
 merge (a)-[:USES]->(b);
 
@@ -24,8 +24,18 @@ merge (a)-[:USES]->(b);
 merge (m: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67", amount: "0.360", unit: "g", target: "c1"}) return m;
 merge (m: Material {smiles: "[Li+].[Cl-]"}) return m;
 match (a: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"}),
-      (b: `Material add` {id: "426cb268-2304-11ef-8370-7ba134642a67"})
+      (b: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67"})
 merge (a)-[:NEXT]->(b);
 match (a: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"}),
       (b: Material {smiles: "[Li+].[Cl-]"})
 merge (a)-[:USES]->(b);
+
+merge (m: `Material Add` {id: "1a8925a0-2305-11ef-b5fd-0780816f3b84", amount: "0.085", unit: "g", target: "c1"}) return m;
+merge (m: Material {smiles: "S1SSSSSSS1"}) return m;
+match (a: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67"}),
+      (b: `Material Add` {id: "1a8925a0-2305-11ef-b5fd-0780816f3b84"})
+merge (a)-[:NEXT]->(b);
+match (a: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67"}),
+      (b: Material {smiles: "S1SSSSSSS1"})
+merge (a)-[:USES]->(b);
+
