@@ -23,7 +23,7 @@ merge (a)-[:USES]->(b);
 
 merge (m: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67", amount: "0.360", unit: "g", target: "c1"}) return m;
 merge (m: Material {smiles: "[Li+].[Cl-]"}) return m;
-match (a: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"}),
+match (a: `Material Add` {id: "6ddae682-2303-11ef-8543-8fce4c4a6d0c"}),
       (b: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67"})
 merge (a)-[:NEXT]->(b);
 match (a: `Material Add` {id: "426cb268-2304-11ef-8370-7ba134642a67"}),
