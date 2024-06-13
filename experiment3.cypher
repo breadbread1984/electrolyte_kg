@@ -58,5 +58,8 @@ match (a {id: "7f5d7688-2955-11ef-ac66-0b4f272a996b"}),
       (b {id: "62a6c0ca-2956-11ef-bc40-eb3a741d00fd"})
 merge (a)-[r:NEXT]->(b);
 
-
+merge (d: Device {id: "0ca30986-2965-11ef-a59d-df0aa44bd4c7", device: "XRD", target: "c1", params: "{\"type\":\"2theta\",\"peaks\":[15.5,18,26,30.5,32]}"});
+match (a {id: "62a6c0ca-2956-11ef-bc40-eb3a741d00fd"}),
+      (b {id: "0ca30986-2965-11ef-a59d-df0aa44bd4c7"})
+merge (a)-[r:NEXT]->(b);
 
