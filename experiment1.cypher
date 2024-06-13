@@ -91,9 +91,9 @@ match (a: Device {id: "01555998-218c-11ef-b203-dfb9eb484c1c"}),
       (b: Device {id: "49f61712-218e-11ef-9026-fffd9ae6242a"})
 merge (a)-[r:NEXT]->(b);
 
-merge (c: Solidify {id: "e9648b98-22de-11ef-b116-bf33c525c8ec", method: "heat", target: "c2", params: "{\"temperature\": \"188\", \"unit\": \"Celsius\", \"seconds\": \"10800\", \"environment\": \"glove box\"}"});
+merge (c: `Glove Box Operation` {id: "e9648b98-22de-11ef-b116-bf33c525c8ec", type: "heating", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\": \"188\", \"unit\": \"Celsius\",\"warmup seconds\":\"none\",\"warmup rate\":\"none\",\"duration seconds\": \"10800\"}"});
 match (a: Device {id: "49f61712-218e-11ef-9026-fffd9ae6242a"}),
-      (b: Solidify {id: "e9648b98-22de-11ef-b116-bf33c525c8ec"})
+      (b: `Glove Box Operation` {id: "e9648b98-22de-11ef-b116-bf33c525c8ec"})
 merge (a)-[r:NEXT]->(b);
 
 merge (d: Device {id: "84905356-22e2-11ef-90ea-3b47e8ea889b", device: "XRD", target: "c2", params: "{\"type\:\"2theta\",\"peaks\":[19.9,23.6]}"});
