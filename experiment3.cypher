@@ -92,4 +92,16 @@ match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
       (b {id: "0ca30986-2965-11ef-a59d-df0aa44bd4c7"})
 merge (a)-[r:INCLUDE_STEP]->(b);
 
+match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
+      (b {smiles: "S1SSSSSSS1"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
+      (b {smiles: "[P]"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
+      (b {smiles: "[Li]"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
+      (b {smiles: "[Li+].[Cl-]"})
+merge (a)-[r:USE_PRECURSOR]->(b);
 
