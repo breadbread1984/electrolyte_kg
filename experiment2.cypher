@@ -74,7 +74,7 @@ match (a: `Glove Box Operation` {id: "393f0142-292f-11ef-9f40-cfa7fb5238f9"}),
       (b: `Glove Box Operation` {id: "d2b6c486-292f-11ef-a72b-1ba46a14eb9f"})
 merge (a)-[:NEXT]->(b);
 
-merge (a: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1", type: "cooling", "target": "c2", params: "{\"atmosphere\":\"argon\"}"});
+merge (a: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1", type: "cooling", target: "c2", params: "{\"atmosphere\":\"argon\"}"});
 match (a: `Glove Box Operation` {id: "d2b6c486-292f-11ef-a72b-1ba46a14eb9f"}),
       (b: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1"})
 merge (a)-[:NEXT]->(b);
