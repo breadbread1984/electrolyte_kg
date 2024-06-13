@@ -135,3 +135,17 @@ merge (a)-[r:INCLUDE_STEP]->(b);
 match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
       (b {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a"})
 merge (a)-[r:INCLUDE_STEP]->(b);
+
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {smiles: "[Li+].[Li+].[S-2]"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {smiles: "[Li+].[Cl-]"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {smiles: "S1SSSSSSS1"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+
