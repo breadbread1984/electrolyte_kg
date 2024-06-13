@@ -85,4 +85,53 @@ match (a: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1"}),
 merge (a)-[:NEXT]->(b);
 
 merge (a: Device {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a", device: "ICP", target: "c2", params: "{\"materials\":\"Li:S:P:Cl\",\"5.40:4.45:1.00:1.70\",\"unit\":\"mol\"}"});
+match (a: Device {id: "1ae144e0-2933-11ef-8f45-0730b77a35a3"}),
+      (b: Device {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a"})
+merge (a)-[:NEXT]->(b);
 
+merge (e: Experiment {id: "b47f0708-2948-11ef-8403-33a84d922f2c", first_step: "f2be25f6-2300-11ef-ac2e-ef73062c8016", last_step: "9640b026-2933-11ef-8013-d73c7dc7aa6a"});
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "6ddae682-2303-11ef-8543-8fce4c4a6d0c"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "426cb268-2304-11ef-8370-7ba134642a67"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "1a8925a0-2305-11ef-b5fd-0780816f3b84"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "d21ffb34-2306-11ef-9431-8720195367ce"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "7c42fe8a-2308-11ef-8b3b-afb33a91c676"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "71b1a91a-292c-11ef-b282-0f194ed21d02"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "ffbc24f2-292b-11ef-b21b-e7d556892816"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "89d00144-292d-11ef-82bd-071261b563f1"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "393f0142-292f-11ef-9f40-cfa7fb5238f9"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "d2b6c486-292f-11ef-a72b-1ba46a14eb9f"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "1ae144e0-2933-11ef-8f45-0730b77a35a3"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "b47f0708-2948-11ef-8403-33a84d922f2c"}),
+      (b {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a"})
+merge (a)-[r:INCLUDE_STEP]->(b);
