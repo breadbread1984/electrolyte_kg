@@ -151,3 +151,16 @@ match (a {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"}),
       (b {id: "84905356-22e2-11ef-90ea-3b47e8ea889b"})
 merge (a)-[r:INCLUDE_STEP]->(b);
 
+match (a {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"}),
+      (b {smiles: "[Li+].[Li+].[S-2]"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"}),
+      (b {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"}),
+      (b {smiles: "BrBr"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+match (a {id: "3e7ae6ae-22e4-11ef-85c7-b373cd1c0ff0"}),
+      (b {smiles: "II"})
+merge (a)-[r:USE_PRECURSOR]->(b);
+
