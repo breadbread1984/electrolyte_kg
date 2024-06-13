@@ -79,4 +79,8 @@ match (a: `Glove Box Operation` {id: "d2b6c486-292f-11ef-a72b-1ba46a14eb9f"}),
       (b: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1"})
 merge (a)-[:NEXT]->(b);
 
+merge (a: Device {id: "1ae144e0-2933-11ef-8f45-0730b77a35a3", device: "XRD", target: "c2", params: "{\"type\":\"2theta\",\"peaks\":[15.6,18.0,25.6,30.1,31.5,45.2]}"});
+match (a: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1"}),
+      (b: Device {id: "1ae144e0-2933-11ef-8f45-0730b77a35a3"})
+merge (a)-[:NEXT]->(b);
 
