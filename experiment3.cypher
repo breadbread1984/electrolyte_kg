@@ -30,4 +30,13 @@ match (a: {id: "9bf9273a-2953-11ef-b752-e7f8732086cd"}),
       (b: {smiles: "[Li]"})
 merge (a)-[r:USES]->(b);
 
+merge (m: `Material Add` {id: "23b701e2-2954-11ef-b9f1-a7eff596877f", amount: "3.1", unit: "g", target: "c1"});
+merge (m: Material {smiles: "[Li+].[Cl-]"});
+match (a: {id: "9bf9273a-2953-11ef-b752-e7f8732086cd"}),
+      (b: {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"})
+merge (a)-[r:NEXT]->(b);
+match (a: {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"}),
+      (b: {smiles: "[Li+].[Cl-]"})
+merge (a)-[r:USES]->(b);
+
 
