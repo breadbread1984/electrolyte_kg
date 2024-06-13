@@ -97,7 +97,7 @@ match (a: Device {id: "49f61712-218e-11ef-9026-fffd9ae6242a"}),
 merge (a)-[r:NEXT]->(b);
 
 merge (d: Device {id: "84905356-22e2-11ef-90ea-3b47e8ea889b", device: "XRD", target: "c2", params: "{\"type\":\"2theta\",\"peaks\":[19.9,23.6]}"});
-match (a: Solidify {id: "e9648b98-22de-11ef-b116-bf33c525c8ec"}),
+match (a: `Glove Box Operation` {id: "e9648b98-22de-11ef-b116-bf33c525c8ec"}),
       (b: Device {id: "84905356-22e2-11ef-90ea-3b47e8ea889b"})
 merge (a)-[r:NEXT]->(b);
 
