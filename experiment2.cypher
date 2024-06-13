@@ -1,7 +1,7 @@
 create database experiments if not exists;
 use experiments;
 
-merge (c: `Container Preparation` {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016", type: "planetary ball mill zirconia", volume: 45, unit: "ml", target: "c1"}) return c;
+merge (c: `Container Preparation` {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"}) return c;
 
 merge (m: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1", amount: "0.464", unit: "g", target: "c1"}) return m;
 merge (m: Material {smiles: "[Li+].[Li+].[S-2]"}) return m;
