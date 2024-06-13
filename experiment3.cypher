@@ -39,4 +39,17 @@ match (a: {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"}),
       (b: {smiles: "[Li+].[Cl-]"})
 merge (a)-[r:USES]->(b);
 
+merge (m: `Material Add` {id: "0a9c0f30-2955-11ef-951a-237ebc4f9869", amount: "165", unit: "g", target: "c1"});
+merge (m: Material {smiles: "Cc1ccccc1C"});
+match (a: {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"}),
+      (b: {id: "0a9c0f30-2955-11ef-951a-237ebc4f9869"})
+merge (a)-[r:NEXT]->(b);
+match (a: {id: "0a9c0f30-2955-11ef-951a-237ebc4f9869"}),
+      (b: {smiles: "Cc1ccccc1C"})
+merge (a)-[r:USES]->(b);
+
+merge (d: Device {id: "7f5d7688-2955-11ef-ac66-0b4f272a996b", device: "planetary ball mill", target: "c1", params: "{\"rpm\": 360, \"seconds\": 200000}"});
+match (a: {id: "0a9c0f30-2955-11ef-951a-237ebc4f9869"}),
+      (b: {id: "7f5d7688-2955-11ef-ac66-0b4f272a996b"})
+merge (a)-[r:NEXT]->(b);
 
