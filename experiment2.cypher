@@ -1,5 +1,4 @@
-create database experiments if not exists;
-use experiments;
+#!/usr/bin/cypher-shell
 
 merge (c: `Container Preparation` {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"}) return c;
 
