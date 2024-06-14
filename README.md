@@ -7,9 +7,7 @@ this project represents electrolyte preparation experiments with graph database.
 ## restore data
 
 ```shell
-cat experiment1.cypher | cypher-shell -a neo4j://localhost:7687 -u <username> -p <password> -d <database>
-cat experiment2.cypher | cypher-shell -a neo4j://localhost:7687 -u <username> -p <password> -d <database>
-cat experiment3.cypher | cypher-shell -a neo4j://localhost:7687 -u <username> -p <password> -d <database>
+bash restore.sh
 ```
 
 ## test experiment instruction generation
