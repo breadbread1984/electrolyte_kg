@@ -21,7 +21,10 @@ class Instructions(object):
     records, summary, keys = self.driver.execute_query('match path = (a {id: $first_step})-[r:NEXT*..]->(b {id: $last_step}) return nodes(path) as steps', first_step = first_step, last_step = last_step, database_ = self.database)
     assert len(records[0]) == 1
     for step in records[0]['steps']:
-      print(step)
+      if list(step.labels)[0] == 'Material Add':
+        records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
+        assert len(records) == 1
+        print(records[0]['material']['smiles'])
 
 if __name__ == "__main__":
   exp = Instructions(password = '19841124')

@@ -81,7 +81,7 @@ match (a: `Glove Box Operation` {id: "1d7fb9a4-2931-11ef-bfbf-f7e32afddca1"}),
       (b: Device {id: "1ae144e0-2933-11ef-8f45-0730b77a35a3"})
 merge (a)-[:NEXT]->(b);
 
-merge (a: Device {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a", device: "ICP", target: "c2", params: "{\"materials\":\"Li:S:P:Cl\",\"5.40:4.45:1.00:1.70\",\"unit\":\"mol\"}"});
+merge (a: Device {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a", device: "ICP", target: "c2", params: "{\"elements\":\"Li:S:P:Cl\",\"proportion\":\"5.40:4.45:1.00:1.70\",\"unit\":\"mol\"}"});
 match (a: Device {id: "1ae144e0-2933-11ef-8f45-0730b77a35a3"}),
       (b: Device {id: "9640b026-2933-11ef-8013-d73c7dc7aa6a"})
 merge (a)-[:NEXT]->(b);
