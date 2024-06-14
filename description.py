@@ -30,7 +30,7 @@ class Device(Description):
   def to_string(self,):
     params = json.loads(self.node['params'])
     if self.node['device'] == 'planetary ball mill':
-      s = f"采用planetary ball mill对容器{self.node['target']}进行研磨，研磨转速为{params['rpm']}，研磨时间为{params['seconds']}秒。"
+      s = f"采用planetary ball mill对容器{self.node['target']}内的样本进行研磨，研磨转速为{params['rpm']}，研磨时间为{params['seconds']}秒。"
     elif self.node['device'] == 'XRD':
       s = f"采用X-ray diffraction(XRD)设备对容器{self.node['target']}内的样品进行检测，"
       if params['type'] == "2theta":
