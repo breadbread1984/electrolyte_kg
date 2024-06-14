@@ -32,17 +32,22 @@ class Instructions(object):
     assert len(records[0]) == 1
     instructions = list()
     reactant_idx = 0
+    print(records[0]['steps'])
     for step in records[0]['steps']:
       ops_type = list(step.labels)[0]
       if ops_type == 'Material Add':
-        '''
-        records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
+        records, summary, keys = self.driver.execute_query('match (a {id: $sid})<-[r:USE_PRECURSOR]-(e: Experiment) return count(e) as exp_num', sid = step['id'], database_ = self.database)
         assert len(records) == 1
-        print(records[0]['material']['smiles'])
-        '''
-        precursor = precursors[reactant_idx]
-        reactant_idx += 1
-        instructions.append(self.ops_types[ops_type](step, precursor).to_string())
+        if records[0]['exp_num'] == 1
+          # if the added material is one of rectant
+          precursor = precursors[reactant_idx]
+          reactant_idx += 1
+          instructions.append(self.ops_types[ops_type](step, precursor).to_string())
+        else:
+          # if the added material is just a solvent
+          records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
+          assert len(records) == 1
+          instructions.append(self.ops_types[ops_type](step, records[0]['material']['smiles']).to_string())
       else:
         instructions.append(self.ops_types[ops_type](step).to_string())
     return instructions
