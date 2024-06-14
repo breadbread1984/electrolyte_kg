@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 
 from neo4j.graph import Node
-from abc import ABC
+from abc import ABC, abstractmethod
 import json
 
 class Description(ABC):
+  @abstractmethod
   def to_string(self,):
     raise NotImplementedError
 
@@ -79,4 +80,9 @@ class Purify(Description):
     s = f"对容器{self.node['target']}通过{self.node['method']}方法，去除{params['remove']}。"
     return s
 
-
+class Dry(Description):
+  def __init__(self, node: Node):
+    self.node = node
+  def to_string(self,):
+    params = json.loads(self.node['params'])
+    s = f""
