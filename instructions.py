@@ -46,7 +46,7 @@ class Instructions(object):
           # if the added material is just a solvent
           records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
           assert len(records) == 1
-          instructions.append(self.ops_types[ops_type](step, records[0]['material']['smiles']).to_string())
+          instructions.append(self.ops_types[ops_type](step, records[0]['material']['name']).to_string())
       else:
         instructions.append(self.ops_types[ops_type](step).to_string())
     return instructions
