@@ -1,6 +1,6 @@
 # Introduction
 
-this project represents electrolyte preparation experiment with graph database.
+this project represents electrolyte preparation experiments with graph database.
 
 # Usage
 
