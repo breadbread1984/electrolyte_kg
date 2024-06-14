@@ -36,4 +36,9 @@ match (a: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231"}),
       (b: Material {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"})
 merge (a)-[:USES]->(b);
 
+merge (d: Device {id: "469f8648-2a2b-11ef-a51a-9b8194e5b03d", device: "roller mill", target: "c1", params: "{\"bead weight\": 400,\"bead weight unit\":\"g\",\"bead size\":10,\"bead size unit\":\"mm\",\"rpm\":150,\"seconds\":86400}"});
+match (a: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231"}),
+      (b: Device {id: "469f8648-2a2b-11ef-a51a-9b8194e5b03d"})
+merge (a)-[:NEXT]->(b);
+
 
