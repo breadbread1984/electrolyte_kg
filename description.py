@@ -54,4 +54,13 @@ class GloveBoxOperation(Description):
     elif self.node['type'] == 'sealing':
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{params['target']}采用{params['method']}采用封闭。"
     elif self.node['type'] == 'heating':
-      s = f"在{params['atmosphere']}环境的Glove Box中对容器{params['target']}采用{}"
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{params['target']}进行加热，从室温到目标温度为{params['temperature']}{params['unit']}，"
+      if params['warmup seconds'] != 'none' and params['warmup rate'] != 'none':
+        s += f"加热需要在{params['warmup seconds']}秒时间以{params['warmup rate']}速率加热到目标温度，"
+      s += f"在目标温度需要维持{params['duration seconds']}秒。"
+    elif self.node['type'] == 'cooling':
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{params['target']}进行冷却，到室温。"
+    else:
+      raise Exception('unknown Glove Box operation!')
+    return s
+
