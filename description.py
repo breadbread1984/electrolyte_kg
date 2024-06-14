@@ -64,3 +64,11 @@ class GloveBoxOperation(Description):
       raise Exception('unknown Glove Box operation!')
     return s
 
+class Collect(Description):
+  def __init__(self, node: Node):
+    self.node = node
+  def to_string(self,):
+    s = f"从容器{self.node['source']}转移样本到容器{self.node['target']}。"
+    return s
+
+
