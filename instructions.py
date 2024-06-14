@@ -2,8 +2,18 @@
 
 import numpy as np
 from neo4j import GraphDatabase
+from description import *
 
 class Instructions(object):
+  ops_types = {
+    'Material Add': MaterialAdd,
+    'Container Preparation': ContainerPreparation,
+    'Device': Device,
+    'Glove Box Operation': GloveBoxOperation,
+    'Collect': Collect,
+    'Purify': Purify,
+    'Dry': Dry,
+  }
   def __init__(self, host = 'neo4j://localhost:7687', username = 'neo4j', password = None, db = 'neo4j'):
     self.driver = GraphDatabase.driver(host, auth = (username, password))
     self.database = db
@@ -20,12 +30,25 @@ class Instructions(object):
     first_step, last_step = records[0]['first_step'], records[0]['last_step']
     records, summary, keys = self.driver.execute_query('match path = (a {id: $first_step})-[r:NEXT*..]->(b {id: $last_step}) return nodes(path) as steps', first_step = first_step, last_step = last_step, database_ = self.database)
     assert len(records[0]) == 1
+    instructions = list()
+    reactant_idx = 0
     for step in records[0]['steps']:
-      if list(step.labels)[0] == 'Material Add':
+      ops_type = list(step.labels)[0]
+      if ops_type == 'Material Add':
+        '''
         records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
         assert len(records) == 1
         print(records[0]['material']['smiles'])
+        '''
+        precursor = precursors[reactant_idx]
+        instructions.append(self.ops_types[ops_type](step, precursor).to_string())
+      else:
+        instructions.append(self.ops_types[ops_type](step).to_string())
+    return instructions
 
 if __name__ == "__main__":
   exp = Instructions(password = '19841124')
-  exp.steps([1,2,3,4])
+  instructions = exp.steps(['Li2O','Li2S','Li3PO4','LiCl'])
+  for idx, instruction in enumerate(instructions):
+    print(f"{idx}: {instruction}")
+
