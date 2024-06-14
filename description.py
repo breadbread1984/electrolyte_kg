@@ -43,3 +43,15 @@ class Device(Description):
     else:
       raise Exception('unknown device!')
     return s
+
+class GloveBoxOperation(Description):
+  def __init__(self, node: Node):
+    self.node = node
+  def to_string(self,):
+    params = json.loads(self.node['params'])
+    if self.node['type'] == 'moving':
+      s = f"在{params['atmosphere']}环境的Glove Box中将容器{params['source']}中的物质转移{params['amount']}{params['unit']}到容器{params['target']}中。"
+    elif self.node['type'] == 'sealing':
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{params['target']}采用{params['method']}采用封闭。"
+    elif self.node['type'] == 'heating':
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{params['target']}采用{}"
