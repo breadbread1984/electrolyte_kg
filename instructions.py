@@ -38,7 +38,7 @@ class Instructions(object):
       if ops_type == 'Material Add':
         records, summary, keys = self.driver.execute_query('match (a {id: $sid})<-[r:USE_PRECURSOR]-(e: Experiment) return count(e) as exp_num', sid = step['id'], database_ = self.database)
         assert len(records) == 1
-        if records[0]['exp_num'] == 1
+        if records[0]['exp_num'] == 1:
           # if the added material is one of rectant
           precursor = precursors[reactant_idx]
           reactant_idx += 1
