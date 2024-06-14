@@ -1,7 +1,7 @@
 merge (c: `Container Preparation` {id: "211cf444-2951-11ef-a224-1335ae9455e7", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"});
 
 merge (m: `Material Add` {id: "313c0800-2952-11ef-9a17-ebba0962c8f6", amount: "11.9", unit: "g", target: "c1"});
-merge (m: Material {smiles: "S1SSSSSSS1"});
+merge (m: Material {smiles: "S1SSSSSSS1", name: "sulfur"});
 match (a {id: "211cf444-2951-11ef-a224-1335ae9455e7"}),
       (b {id: "313c0800-2952-11ef-9a17-ebba0962c8f6"})
 merge (a)-[r:NEXT]->(b);
@@ -10,7 +10,7 @@ match (a {id: "313c0800-2952-11ef-9a17-ebba0962c8f6"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "d222b2be-2952-11ef-89a0-a7b867f72d78", amount: "2.3", unit: "g", target: "c1"});
-merge (m: Material {smiles: "[P]"});
+merge (m: Material {smiles: "[P]", name: "phosphorus"});
 match (a {id: "313c0800-2952-11ef-9a17-ebba0962c8f6"}),
       (b {id: "d222b2be-2952-11ef-89a0-a7b867f72d78"})
 merge (a)-[r:NEXT]->(b);
@@ -19,7 +19,7 @@ match (a {id: "d222b2be-2952-11ef-89a0-a7b867f72d78"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "9bf9273a-2953-11ef-b752-e7f8732086cd", amount: "2.6", unit: "g", target: "c1"});
-merge (m: Material {smiles: "[Li]"});
+merge (m: Material {smiles: "[Li]", name: "lithium"});
 match (a {id: "d222b2be-2952-11ef-89a0-a7b867f72d78"}),
       (b {id: "9bf9273a-2953-11ef-b752-e7f8732086cd"})
 merge (a)-[r:NEXT]->(b);
@@ -28,7 +28,7 @@ match (a {id: "9bf9273a-2953-11ef-b752-e7f8732086cd"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "23b701e2-2954-11ef-b9f1-a7eff596877f", amount: "3.1", unit: "g", target: "c1"});
-merge (m: Material {smiles: "[Li+].[Cl-]"});
+merge (m: Material {smiles: "[Li+].[Cl-]", name: "lithium chloride"});
 match (a {id: "9bf9273a-2953-11ef-b752-e7f8732086cd"}),
       (b {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"})
 merge (a)-[r:NEXT]->(b);
@@ -37,7 +37,7 @@ match (a {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "0a9c0f30-2955-11ef-951a-237ebc4f9869", amount: "165", unit: "g", target: "c1"});
-merge (m: Material {smiles: "Cc1ccccc1C"});
+merge (m: Material {smiles: "Cc1ccccc1C", name: "xylene"});
 match (a {id: "23b701e2-2954-11ef-b9f1-a7eff596877f"}),
       (b {id: "0a9c0f30-2955-11ef-951a-237ebc4f9869"})
 merge (a)-[r:NEXT]->(b);
