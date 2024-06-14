@@ -53,7 +53,7 @@ class GloveBoxOperation(Description):
     if self.node['type'] == 'moving':
       s = f"在{params['atmosphere']}环境的Glove Box中将容器{self.node['source']}中的物质转移{params['amount']}{params['unit']}到容器{self.node['target']}中。"
     elif self.node['type'] == 'sealing':
-      s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}采用{params['method']}采用封闭。"
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}采用{params['method']}封闭。"
     elif self.node['type'] == 'heating':
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行加热，从室温到目标温度为{params['temperature']}{params['unit']}，"
       if params['warmup seconds'] != 'none' and params['warmup rate'] != 'none':
