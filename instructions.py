@@ -32,7 +32,6 @@ class Instructions(object):
     assert len(records[0]) == 1
     instructions = list()
     reactant_idx = 0
-    print(records[0]['steps'])
     for step in records[0]['steps']:
       ops_type = list(step.labels)[0]
       if ops_type == 'Material Add':
