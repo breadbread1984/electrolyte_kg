@@ -34,7 +34,7 @@ class Device(Description):
     elif self.node['device'] == 'XRD':
       s = f"采用X-ray diffraction(XRD)设备对容器{self.node['target']}内的样品进行检测，"
       if params['type'] == "2theta":
-        s += f"结果2θ应该在{','.join([peak + '°' for peak in params['peaks']])}产生峰值。"
+        s += f"结果2θ应该在{','.join([f'{peak}°' for peak in params['peaks']])}产生峰值。"
       elif params['type'] == 'materials':
         s += f"结果应该在{','.join(params['peaks'])}物质对应位置产生峰值。"
       else:
