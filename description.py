@@ -85,4 +85,10 @@ class Dry(Description):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])
-    s = f""
+    if self.node['method'] == 'vacuum pump':
+      s = f"对容器{self.node['target']}加热到{params['temperature']}{params['unit']}，并通过{self.node['method']}进行干燥。"
+    else:
+      raise Exception('unknown dry method!')
+    return s
+
+
