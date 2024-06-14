@@ -18,4 +18,12 @@ match (a: `Material Add` {id: "b95e8632-2a28-11ef-beea-5fa0fe30773d"}),
       (b: Material {smiles: "[Li+].[Li+].[O-][O-]"})
 merge (a)-[:USES]->(b);
 
+merge (m: `Material Add` {id: "4ea0414a-2a29-11ef-9181-1fe17f6042d8", amount: "11.6148", unit: "g", target: "c1"});
+merge (m: Material {smiles: "S=[Ge]=S", name: "germanium disulfide"});
+match (a: `Material Add` {id: "b95e8632-2a28-11ef-beea-5fa0fe30773d"}),
+      (b: `Material Add` {id: "4ea0414a-2a29-11ef-9181-1fe17f6042d8"})
+merge (a)-[:NEXT]->(b);
+match (a: `Material Add` {id: "4ea0414a-2a29-11ef-9181-1fe17f6042d8"}),
+      (b: Material {smiles: "S=[Ge]=S"})
+merge (a)-[:USES]->(b);
 
