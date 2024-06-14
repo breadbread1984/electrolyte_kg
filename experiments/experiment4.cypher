@@ -27,3 +27,13 @@ match (a: `Material Add` {id: "4ea0414a-2a29-11ef-9181-1fe17f6042d8"}),
       (b: Material {smiles: "S=[Ge]=S"})
 merge (a)-[:USES]->(b);
 
+merge (m: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231", amount: "18.8759", unit: "g", target: "c1"});
+merge (m: Material {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3", name: "diphosphorus pentasulfide"});
+match (a: `Material Add` {id: "4ea0414a-2a29-11ef-9181-1fe17f6042d8"}),
+      (b: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231"})
+merge (a)-[:NEXT]->(b);
+match (a: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231"}),
+      (b: Material {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"})
+merge (a)-[:USES]->(b);
+
+
