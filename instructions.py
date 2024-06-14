@@ -41,6 +41,7 @@ class Instructions(object):
         print(records[0]['material']['smiles'])
         '''
         precursor = precursors[reactant_idx]
+        reactant_idx += 1
         instructions.append(self.ops_types[ops_type](step, precursor).to_string())
       else:
         instructions.append(self.ops_types[ops_type](step).to_string())
