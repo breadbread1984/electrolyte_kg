@@ -73,7 +73,7 @@ match (a: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976"}),
       (b: Purify {id: "14d3e92e-2189-11ef-afd8-936ec9651bf8"})
 merge (a)-[r:NEXT]->(b);
 
-merge (d: Dry {id: "f5f271aa-2189-11ef-8d9a-7319481d758f", method: "vacuum pump", target: "c2", params: "{\"temperature\": 100, \"unit\": \"Celsius\"}"}) return d;
+merge (d: Dry {id: "f5f271aa-2189-11ef-8d9a-7319481d758f", method: "vacuum pump", target: "c2", params: "{\"temperature\": 100, \"unit\": \"C\"}"}) return d;
 match (a: Purify {id: "14d3e92e-2189-11ef-afd8-936ec9651bf8"}),
       (b: Dry {id: "f5f271aa-2189-11ef-8d9a-7319481d758f"})
 merge (a)-[r:NEXT]->(b);
@@ -88,7 +88,7 @@ match (a: Device {id: "01555998-218c-11ef-b203-dfb9eb484c1c"}),
       (b: Device {id: "49f61712-218e-11ef-9026-fffd9ae6242a"})
 merge (a)-[r:NEXT]->(b);
 
-merge (c: `Glove Box Operation` {id: "e9648b98-22de-11ef-b116-bf33c525c8ec", type: "heating", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\": 188, \"unit\": \"Celsius\",\"warmup seconds\":\"none\",\"warmup rate\":\"none\",\"duration seconds\": 10800}"});
+merge (c: `Glove Box Operation` {id: "e9648b98-22de-11ef-b116-bf33c525c8ec", type: "heating", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\": 188, \"unit\": \"C\",\"warmup seconds\":\"none\",\"warmup rate\":\"none\",\"duration seconds\": 10800}"});
 match (a: Device {id: "49f61712-218e-11ef-9026-fffd9ae6242a"}),
       (b: `Glove Box Operation` {id: "e9648b98-22de-11ef-b116-bf33c525c8ec"})
 merge (a)-[r:NEXT]->(b);
