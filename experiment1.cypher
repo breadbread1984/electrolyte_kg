@@ -1,7 +1,7 @@
 merge (c: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"}) return c;
 
 merge (m: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f", amount: "0.661", unit: "g", target: "c1"}) return m;
-merge (m: Material {smiles: "[Li+].[Li+].[S-2]"}) return m;
+merge (m: Material {smiles: "[Li+].[Li+].[S-2]", name: "lithium sulfide"}) return m;
 match (a: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070"}),
       (b: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f"})
 merge (a)-[r:NEXT]->(b);
@@ -10,7 +10,7 @@ match (a: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f"}),
 merge (a)-[:USES]->(b);
 
 merge (m: `Material Add` {id: "0ecd2020-2177-11ef-ae10-1fc490bcaac2", amount: "0.914", unit: "g", target: "c1"}) return m;
-merge (m: Material {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"}) return m;
+merge (m: Material {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3", name: "diphosphorus pentasulfide"}) return m;
 match (a: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f"}),
       (b: `Material Add` {id: "0ecd2020-2177-11ef-ae10-1fc490bcaac2"})
 merge (a)-[r:NEXT]->(b);
@@ -19,7 +19,7 @@ match (a: `Material Add` {id: "0ecd2020-2177-11ef-ae10-1fc490bcaac2"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "b5cb59b2-2179-11ef-af0a-c7a0c34dd12a", amount: "0.164", unit: "g", target: "c1"}) return m;
-merge (m: Material {smiles: "BrBr"}) return m;
+merge (m: Material {smiles: "BrBr", name: "bromine"}) return m;
 match (a: `Material Add` {id: "0ecd2020-2177-11ef-ae10-1fc490bcaac2"}),
       (b: `Material Add` {id: "b5cb59b2-2179-11ef-af0a-c7a0c34dd12a"})
 merge (a)-[r:NEXT]->(b);
@@ -28,7 +28,7 @@ match (a: `Material Add` {id: "b5cb59b2-2179-11ef-af0a-c7a0c34dd12a"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "58352e26-217a-11ef-bfbf-c32be4f1b178", amount: "0.261", unit: "g", target: "c1"}) return m;
-merge (m: Material {smiles: "II"}) return m;
+merge (m: Material {smiles: "II", name: "iodine"}) return m;
 match (a: `Material Add` {id: "b5cb59b2-2179-11ef-af0a-c7a0c34dd12a"}),
       (b: `Material Add` {id: "58352e26-217a-11ef-bfbf-c32be4f1b178"})
 merge (a)-[r:NEXT]->(b);
@@ -37,7 +37,7 @@ match (a: `Material Add` {id: "58352e26-217a-11ef-bfbf-c32be4f1b178"}),
 merge (a)-[r:USES]->(b);
 
 merge (m: `Material Add` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae", amount: "4", unit: "g", target: "c1"}) return m;
-merge (m: Material {smiles: "c1ccccc1Cl"}) return m;
+merge (m: Material {smiles: "c1ccccc1Cl", name: "chlorobenzene"}) return m;
 match (a: `Material Add` {id: "58352e26-217a-11ef-bfbf-c32be4f1b178"}),
       (b: `Material Add` {id: "d9237110-217e-11ef-b2f1-4392ef0994ae"})
 merge (a)-[r:NEXT]->(b);
