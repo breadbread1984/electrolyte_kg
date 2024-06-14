@@ -1,5 +1,3 @@
-#!/user/bin/cypher-shell
-
 merge (c: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"}) return c;
 
 merge (m: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f", amount: "0.661", unit: "g", target: "c1"}) return m;
