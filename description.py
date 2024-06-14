@@ -71,4 +71,12 @@ class Collect(Description):
     s = f"从容器{self.node['source']}转移样本到容器{self.node['target']}。"
     return s
 
+class Purify(Description):
+  def __init__(self, node: Node):
+    self.node = node
+  def to_string(self,):
+    params = json.loads(self.node['params'])
+    s = f"对容器{self.node['target']}通过{self.node['method']}方法，去除{params['remove']}。"
+    return s
+
 
