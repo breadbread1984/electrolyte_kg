@@ -31,6 +31,8 @@ class Device(Description):
     params = json.loads(self.node['params'])
     if self.node['device'] == 'planetary ball mill':
       s = f"采用planetary ball mill对容器{self.node['target']}内的样本进行研磨，研磨转速为{params['rpm']}rpm，研磨时间为{params['seconds']}秒。"
+    elif self.node['device'] == 'roller mill':
+      s = f"向容器{self.node['target']}加入{params['bead material']}材质的滚磨珠，滚磨珠重量为{params['bead weight']}{params['bead weight unit']}，滚磨珠的直径为{params['bead size']}{params['bead size unit']}，然后通过roller mill对容器{self.node['target']}内的样本进行研磨，研磨转速为{params['rpm']}rpm，研磨时间为{params['seconds']}秒。"
     elif self.node['device'] == 'XRD':
       s = f"采用X-ray diffraction(XRD)设备对容器{self.node['target']}内的样品进行检测，"
       if params['type'] == "2theta":
@@ -69,7 +71,18 @@ class Collect(Description):
   def __init__(self, node: Node):
     self.node = node
   def to_string(self,):
-    s = f"从容器{self.node['source']}转移样本到容器{self.node['target']}。"
+    if self.node['method'] == 'none':
+      s = f"从容器{self.node['source']}转移样本到容器{self.node['target']}。"
+    elif self.node['method'] == 'press':
+      params = json.loads(self.node['params'])
+      s = f"从容器{self.node['source']}中提取{params['sheet number']}份，每份重量为{params['sheet weight']}{params['sheet weight unit']}的样本，每份压成薄片并转移到容器{self.node['target']}。"
+    return s
+
+class Seal(Description):
+  def __init__(self, node: Node):
+    self.node = node
+  def to_string(self,):
+    s = f"对容器{self.node['target']}通过vacuum sealer进行密封。"
     return s
 
 class Purify(Description):
@@ -77,7 +90,12 @@ class Purify(Description):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])
-    s = f"对容器{self.node['target']}通过{self.node['method']}方法，去除{params['remove']}。"
+    if self.node['method'] == 'precipitation':
+      s = f"对容器{self.node['target']}通过沉淀方法，去除{params['remove']}。"
+    elif self.node['method'] == 'calcination':
+      s = f"对容器{self.node['target']}进行煅烧，煅烧在温度{params['temperature']}{params['unit']}持续{params['seconds']}秒。"
+    else:
+      raise Exception('unknown purify method!')
     return s
 
 class Dry(Description):
