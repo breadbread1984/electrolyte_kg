@@ -41,4 +41,14 @@ match (a: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231"}),
       (b: Device {id: "469f8648-2a2b-11ef-a51a-9b8194e5b03d"})
 merge (a)-[:NEXT]->(b);
 
+merge (c: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e", type: "quartz tube", volume: 600, unit: "ml", target: "c2"});
+match (a: Device {id: "469f8648-2a2b-11ef-a51a-9b8194e5b03d"}),
+      (b: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e"})
+merge (a)-[:NEXT]->(b);
+
+merge (a: Collect {id: "d78ff928-2a2e-11ef-bee6-672527c4712e", source: "c1", target: "c2", method: "press", params: "{\"sheet weight\":2,\"sheet weight unit\":\"g\",\"sheet number\":10}"});
+match (a: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e"}),
+      (b: Collect {id: "d78ff928-2a2e-11ef-bee6-672527c4712e"})
+merge (a)-[:NEXT]->(b);
+
 
