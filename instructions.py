@@ -11,6 +11,7 @@ class Instructions(object):
     'Device': Device,
     'Glove Box Operation': GloveBoxOperation,
     'Collect': Collect,
+    'Seal': Seal,
     'Purify': Purify,
     'Dry': Dry,
   }
