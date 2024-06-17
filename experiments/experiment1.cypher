@@ -63,7 +63,7 @@ match (a: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"}),
       (b: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27"})
 merge (a)-[r:NEXT]->(b);
 
-merge (c: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976", source: "c1", target: "c2"}) return c;
+merge (c: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976", source: "c1", target: "c2", method: "none"}) return c;
 match (a: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27"}),
       (b: Collect {id: "d4eced56-2188-11ef-9f4e-b33fc0abb976"})
 merge (a)-[r:NEXT]->(b);
