@@ -13,7 +13,13 @@ class ContainerPreparation(Description):
   def __init__(self, node: Node):
     self.node = node
   def to_string(self,):
-    s = f"准备{self.node['type']}类型{self.node['volume']}{self.node['unit']}容器{self.node['target']}。"
+    params = json.loads(self.node['params'])
+    if self.node['type'] in {'zirconia grinding jar', 'schlenk bottle', 'roller mill pot', 'quartz tube'}:
+      s = f"准备{self.node['type']}类型{params['volume']}{params['unit']}容器{self.node['target']}。"
+    elif self.node['type'] == 'Tammann tube':
+      s = f"准备{self.node['type']}类型，{params['model']}型号的容器{self.node['target']}。"
+    else:
+      raise Exception('unknown container!')
     return s
 
 class MaterialAdd(Description):
