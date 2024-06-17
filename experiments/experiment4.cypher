@@ -51,4 +51,13 @@ match (a: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e"}),
       (b: Collect {id: "d78ff928-2a2e-11ef-bee6-672527c4712e"})
 merge (a)-[:NEXT]->(b);
 
+merge (a: Seal {id: "4f8e5a80-2c48-11ef-992a-3325db096ccb", target: "c2"});
+match (a: Collect {id: "d78ff928-2a2e-11ef-bee6-672527c4712e"}),
+      (b: Seal {id: "4f8e5a80-2c48-11ef-992a-3325db096ccb"})
+merge (a)-[:NEXT]->(b);
+
+merge (a: Purify {id: "71549f66-2c49-11ef-afb6-7f033da321e0", target: "c2", method: "calcination", params: "{\"temperature\":680, \"unit\":\"C\", \"seconds\":1200}"});
+match (a: Seal {id: "4f8e5a80-2c48-11ef-992a-3325db096ccb"}),
+      (b: Purify {id: "71549f66-2c49-11ef-afb6-7f033da321e0"})
+merge (a)-[:NEXT]->(b);
 
