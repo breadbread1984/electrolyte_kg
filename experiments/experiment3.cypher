@@ -1,4 +1,4 @@
-merge (c: `Container Preparation` {id: "211cf444-2951-11ef-a224-1335ae9455e7", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"});
+merge (c: `Container Preparation` {id: "211cf444-2951-11ef-a224-1335ae9455e7", type: "zirconia grinding jar", params:"{\"volume\":45,\"unit\":\"ml\"}", target: "c1"});
 
 merge (m: `Material Add` {id: "313c0800-2952-11ef-9a17-ebba0962c8f6", amount: "11.9", unit: "g", target: "c1"});
 merge (m: Material {smiles: "S1SSSSSSS1", name: "sulfur"});

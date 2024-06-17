@@ -1,4 +1,4 @@
-merge (c: `Container Preparation` {id: "000faa8a-2a28-11ef-b39f-fbe6d6d8c705", type: "roller mill pot", volume: 500, unit: "ml", target: "c1"});
+merge (c: `Container Preparation` {id: "000faa8a-2a28-11ef-b39f-fbe6d6d8c705", type: "roller mill pot", params: "{\"volume\":500,\"unit\":\"ml\"}", target: "c1"});
 
 merge (m: `Material Add` {id: "2bbe83ea-2a28-11ef-9122-13e2eaafaa20", amount: "19.3145", unit: "g", target: "c1"});
 merge (m: Material {smiles: "[Li+].[Li+].[S-2]", name: "lithium sulfide"});
@@ -41,7 +41,7 @@ match (a: `Material Add` {id: "cfdab2d6-2a29-11ef-9b90-6b9afefe5231"}),
       (b: Device {id: "469f8648-2a2b-11ef-a51a-9b8194e5b03d"})
 merge (a)-[:NEXT]->(b);
 
-merge (c: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e", type: "quartz tube", volume: 600, unit: "ml", target: "c2"});
+merge (c: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e", type: "quartz tube", params: "{\"volume\":600,\"unit\":\"ml\"}", target: "c2"});
 match (a: Device {id: "469f8648-2a2b-11ef-a51a-9b8194e5b03d"}),
       (b: `Container Preparation` {id: "10eff6f0-2a2f-11ef-a58a-0b0b7813755e"})
 merge (a)-[:NEXT]->(b);

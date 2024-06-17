@@ -1,4 +1,4 @@
-merge (c: `Container Preparation` {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"}) return c;
+merge (c: `Container Preparation` {id: "f2be25f6-2300-11ef-ac2e-ef73062c8016", type: "zirconia grinding jar", params: "{\"volume\":45,\"unit\":\"ml\"}", target: "c1"}) return c;
 
 merge (m: `Material Add` {id: "c5402fe2-2301-11ef-957e-cf8ecbf307f1", amount: "0.464", unit: "g", target: "c1"}) return m;
 merge (m: Material {smiles: "[Li+].[Li+].[S-2]", name: "lithium sulfide"}) return m;
@@ -46,7 +46,7 @@ match (a: Device {id: "d21ffb34-2306-11ef-9431-8720195367ce"}),
       (b: Device {id: "7c42fe8a-2308-11ef-8b3b-afb33a91c676"})
 merge (a)-[:NEXT]->(b);
 
-merge (c: `Container Preparation` {id: "71b1a91a-292c-11ef-b282-0f194ed21d02", device: "Tammann tube", model: "PT2", target: "c2"});
+merge (c: `Container Preparation` {id: "71b1a91a-292c-11ef-b282-0f194ed21d02", type: "Tammann tube", params: "{\"model\":\"PT2\"}", target: "c2"});
 match (a: Device {id: "7c42fe8a-2308-11ef-8b3b-afb33a91c676"}),
       (c: `Container Preparation` {id: "71b1a91a-292c-11ef-b282-0f194ed21d02"})
 merge (a)-[:NEXT]->(c);

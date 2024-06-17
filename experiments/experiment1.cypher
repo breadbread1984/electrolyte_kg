@@ -1,4 +1,4 @@
-merge (c: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "zirconia grinding jar", volume: 45, unit: "ml", target: "c1"}) return c;
+merge (c: `Container Preparation` {id: "129fe9b8-2176-11ef-8ccd-6f653867f070", type: "zirconia grinding jar", params:"{\"volume\":45,\"unit\":\"ml\"}", target: "c1"}) return c;
 
 merge (m: `Material Add` {id: "70350e50-2176-11ef-979d-0bccd33b989f", amount: "0.661", unit: "g", target: "c1"}) return m;
 merge (m: Material {smiles: "[Li+].[Li+].[S-2]", name: "lithium sulfide"}) return m;
@@ -58,7 +58,7 @@ match (a: Device {id: "34b0fc22-2180-11ef-8268-f76426304c26"}),
       (b: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"})
 merge (a)-[r:NEXT]->(b);
 
-merge (c: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27", type: "schlenk bottle", volume: 50, unit: "ml", target: "c2"}) return c;
+merge (c: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27", type: "schlenk bottle", params: "{\"volume\":50,\"unit\":\"ml\"}", target: "c2"}) return c;
 match (a: `Material Add` {id: "7690f824-2183-11ef-8dd4-2b42360fdc8b"}),
       (b: `Container Preparation` {id: "b1af434a-2186-11ef-8aa2-e3edafa57d27"})
 merge (a)-[r:NEXT]->(b);
