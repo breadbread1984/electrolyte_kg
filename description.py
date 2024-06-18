@@ -74,7 +74,7 @@ class GloveBoxOperation(Description):
       s += f"在目标温度需要维持{params['duration seconds']}秒。"
     elif self.node['type'] == 'cooling':
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行冷却，到室温。"
-    elif self.node['type'] == 'add material':
+    elif self.node['type'] == 'material add':
       records, summary, keys = self.query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
       assert len(records) == 1
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{records[0]['name']}。"
