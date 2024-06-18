@@ -83,6 +83,13 @@ class GloveBoxOperation(Description):
         s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行沉淀，然后去除{params['remove']}。"
       else:
         raise Exception('unknown purify method!')
+    elif self.node['type'] == 'collect':
+      if params['method'] == 'none':
+        s = f"在{params['atmosphere']}环境的Glove Box中从容器{self.node['source']}转移样本到容器{self.node['target']}。"
+      elif params['method'] == 'press':
+        s = f"在{params['atmosphere']}环境的Glove Box中从容器{self.node['source']}中提取{params['sheet number']}份，每份重量为{params['sheet weight']}{params['sheet weight unit']}的样本，每份压成薄片并转移到容器{self.node['target']}。"
+      else:
+        raise Exception('unknown collect method!')
     else:
       raise Exception('unknown Glove Box operation!')
     return s
