@@ -60,4 +60,48 @@ match (a {id: "c60d262e-2d1e-11ef-941b-d7323080b519"}),
       (b {smiles: "Cc1ccccc1"})
 merge (a)-[:USES]->(b);
 
+merge (d: Device {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa", device: "planetary ball mill", target: "c1", params: "{\"rpm\": 500, \"seconds\": 144000}"});
+match (a {id: "c60d262e-2d1e-11ef-941b-d7323080b519"}),
+      (b {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: `Glove Box Operation` {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca", type: "material add", amount: "8.6", unit: "g", target: "c1", param: "{\"atmosphere\":\"argon\"}"});
+match (a {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa"}),
+      (b {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"})
+merge (a)-[:NEXT]->(b);
+
+merge (a {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"}),
+      (b {smiles: "Cc1ccccc1"})
+merge (a)-[:USES]->(b);
+
+merge (c: `Container Preparation` {id: "a125bab0-2d41-11ef-aabc-5f184f9d0c2f", type: "bucket for plate heater", params: "{\"volume\": 45,\"unit\":\"ml\"}", target: "c2"});
+match (a {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"}),
+      (b {id: "a125bab0-2d41-11ef-aabc-5f184f9d0c2f"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: `Glove Box Operation` {id: "2d06fe2c-2d42-11ef-ad55-b3df7c73bb93", type: "collect", source: "c1", target: "c2", params: "{\"atmosphere\":\"argon\",\"method\":\"none\"}"});
+match (a {id: "a125bab0-2d41-11ef-aabc-5f184f9d0c2f"}),
+      (b {id: "2d06fe2c-2d42-11ef-ad55-b3df7c73bb93"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: `Glove Box Operation` {id: "1c6687fc-2d3f-11ef-8559-1fc41a24e17f", type: "purify", target: "c2", params: "{\"atmosphere\":\"argon\",\"method\":\"precipitation\",\"remove\":\"supernatant solvent\"}"});
+match (a {id: "2d06fe2c-2d42-11ef-ad55-b3df7c73bb93"}),
+      (b {id: "1c6687fc-2d3f-11ef-8559-1fc41a24e17f"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: `Glove Box Operation` {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd", type: "heating", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\":80,\"unit\":\"C\",\"warmup seconds\":\"none\",\"warmup rate\":\"none\",\"duration seconds\":\"10800\"}"});
+match (a {id: "1c6687fc-2d3f-11ef-8559-1fc41a24e17f"}),
+      (b {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: Device {id: "0544e850-2d41-11ef-8e3f-231ca3cfccf3", device: "XRD", target: "c2", params: "{\"type\":\"materials\",\"peaks\":[\"Li2S\",\"P2S5\",\"LiBr\",\"LiI\"]}"});
+match (a {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd"}),
+      (b {id: "0544e850-2d41-11ef-8e3f-231ca3cfccf3"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: Device {id: "e397c8c8-2d43-11ef-af9f-4fb626e0d8a4", device: "ICP", target: "c2", params: "{\"elements\":\"Li:S:P:Br:I\", \"proportion\": \"1.390:1.590:0.400:0.109:0.101\", \"unit\": \"mol\"}"});
+match (a {id: "0544e850-2d41-11ef-8e3f-231ca3cfccf3"}),
+      (b {id: "e397c8c8-2d43-11ef-af9f-4fb626e0d8a4"})
+merge (a)-[:NEXT]->(b);
+
 
