@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from functools import partial
 import numpy as np
 from neo4j import GraphDatabase
 from pymatgen.core import Composition
@@ -34,21 +35,22 @@ class Instructions(object):
     assert len(records[0]) == 1
     instructions = list()
     reactant_idx = 0
+    query = partial(self.driver.execute_query, database_ = self.database)
     for step in records[0]['steps']:
       ops_type = list(step.labels)[0]
       if ops_type == 'Material Add':
-        records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[:USES]->(m: Material), (e: Experiment)-[:USE_PRECURSOR]->(m), (e)-[:INCLUDE_STEP]->(a) return count(e) as exp_num', sid = step['id'], database_ = self.database)
+        records, summary, keys = query('match (a {id: $sid})-[:USES]->(m: Material), (e: Experiment)-[:USE_PRECURSOR]->(m), (e)-[:INCLUDE_STEP]->(a) return count(e) as exp_num', sid = step['id'])
         assert len(records) == 1
         if records[0]['exp_num'] == 1:
           # if the added material is one of rectant
           precursor = precursors[reactant_idx]
           reactant_idx += 1
-          instructions.append(self.ops_types[ops_type](step, self.driver, precursor).to_string())
+          instructions.append(self.ops_types[ops_type](step, query, precursor).to_string())
         else:
           # if the added material is just a solvent
-          records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
+          records, summary, keys = query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'])
           assert len(records) == 1
-          instructions.append(self.ops_types[ops_type](step, self.driver, records[0]['material']['name']).to_string())
+          instructions.append(self.ops_types[ops_type](step, query, records[0]['material']['name']).to_string())
       elif ops_type == 'Device':
         if step['device'] == 'ICP':
           # replace ICP reading
@@ -59,15 +61,18 @@ class Instructions(object):
           params['unit'] = 'mol'
         else:
           params = None
-        instructions.append(self.ops_types[ops_type](step, self.driver, params).to_string())
+        instructions.append(self.ops_types[ops_type](step, query, params).to_string())
       else:
-        instructions.append(self.ops_types[ops_type](step, self.driver).to_string())
+        instructions.append(self.ops_types[ops_type](step, query).to_string())
 
     return instructions
 
 if __name__ == "__main__":
   exp = Instructions(password = '19841124')
   instructions = exp.steps('Li6PS5Cl', ['Li2O','Li2S','Li3PO4','LiCl'])
+  for idx, instruction in enumerate(instructions):
+    print(f"{idx}: {instruction}")
+  instructions = exp.steps('Li3.64M0.012S4P', ['Li2S','P2S5','LiBr','LiI','MnS'])
   for idx, instruction in enumerate(instructions):
     print(f"{idx}: {instruction}")
 
