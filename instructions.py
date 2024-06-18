@@ -2,6 +2,7 @@
 
 import numpy as np
 from neo4j import GraphDatabase
+from pymatgen.core import Composition
 from description import *
 
 class Instructions(object):
@@ -20,7 +21,7 @@ class Instructions(object):
     self.database = db
   def __del__(self):
     self.driver.close()
-  def steps(self, precursors: list):
+  def steps(self, target: str, precursors: list):
     records, summary, keys = self.driver.execute_query('match (e: Experiment)-[r:USE_PRECURSOR]->(m:Material) with e, count(m) as precursor_num where precursor_num = $precursor_num return e.id as exp_id', precursor_num = len(precursors), database_ = self.database)
     matched = [record['exp_id'] for record in records]
     if len(matched) == 0:
@@ -48,13 +49,25 @@ class Instructions(object):
           records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
           assert len(records) == 1
           instructions.append(self.ops_types[ops_type](step, records[0]['material']['name']).to_string())
+      elif ops_type == 'Device':
+        if step['device'] == 'ICP':
+          # replace ICP reading
+          comp = Composition(target).as_dict()
+          params = json.loads(step['params'])
+          params['elements'] = ':'.join(list(comp.keys()))
+          params['proportion'] = ':'.join([str(v) for v in comp.values()])
+          params['unit'] = 'mol'
+        else:
+          params = None
+        instructions.append(self.ops_types[ops_type](step, params).to_string())
       else:
         instructions.append(self.ops_types[ops_type](step).to_string())
+
     return instructions
 
 if __name__ == "__main__":
   exp = Instructions(password = '19841124')
-  instructions = exp.steps(['Li2O','Li2S','Li3PO4','LiCl'])
+  instructions = exp.steps('Li6PS5Cl', ['Li2O','Li2S','Li3PO4','LiCl'])
   for idx, instruction in enumerate(instructions):
     print(f"{idx}: {instruction}")
 

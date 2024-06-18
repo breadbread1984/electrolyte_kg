@@ -31,8 +31,9 @@ class MaterialAdd(Description):
     return s
 
 class Device(Description):
-  def __init__(self, node: Node):
+  def __init__(self, node: Node, params: dict):
     self.node = node
+    self.params = params
   def to_string(self,):
     params = json.loads(self.node['params'])
     if self.node['device'] == 'planetary ball mill':
@@ -48,6 +49,7 @@ class Device(Description):
       else:
         raise Exception('unknown mode for XRD!')
     elif self.node['device'] == 'ICP':
+      params = self.params
       s = f"采用inductively coupled plasma spectrometer(ICP)设备对容器{self.node['target']}内的样本进行检测，结果需要显示{params['elements']}元素按照单位{params['unit']}计算的比例应该为{params['proportion']}。"
     else:
       raise Exception('unknown device!')
