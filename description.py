@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+from functools import partial
+from neo4j import Driver
 from neo4j.graph import Node
 from abc import ABC, abstractmethod
 import json
@@ -10,7 +12,7 @@ class Description(ABC):
     raise NotImplementedError
 
 class ContainerPreparation(Description):
-  def __init__(self, node: Node):
+    def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])
@@ -23,7 +25,7 @@ class ContainerPreparation(Description):
     return s
 
 class MaterialAdd(Description):
-  def __init__(self, node: Node, smiles: str):
+  def __init__(self, node: Node, query: partial, smiles: str):
     self.node = node
     self.smiles = smiles
   def to_string(self,):
@@ -31,7 +33,7 @@ class MaterialAdd(Description):
     return s
 
 class Device(Description):
-  def __init__(self, node: Node, params: dict):
+  def __init__(self, node: Node, query: partial, params: dict):
     self.node = node
     self.params = params
   def to_string(self,):
@@ -56,7 +58,7 @@ class Device(Description):
     return s
 
 class GloveBoxOperation(Description):
-  def __init__(self, node: Node):
+  def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])
@@ -71,12 +73,16 @@ class GloveBoxOperation(Description):
       s += f"在目标温度需要维持{params['duration seconds']}秒。"
     elif self.node['type'] == 'cooling':
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行冷却，到室温。"
+    elif self.node['type'] == 'add material':
+      records, summary, keys = query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
+      assert len(records) == 1
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{records[0]['name']}。"
     else:
       raise Exception('unknown Glove Box operation!')
     return s
 
 class Collect(Description):
-  def __init__(self, node: Node):
+  def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     if self.node['method'] == 'none':
@@ -87,14 +93,14 @@ class Collect(Description):
     return s
 
 class Seal(Description):
-  def __init__(self, node: Node):
+  def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     s = f"对容器{self.node['target']}通过vacuum sealer进行密封。"
     return s
 
 class Purify(Description):
-  def __init__(self, node: Node):
+  def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])
@@ -107,7 +113,7 @@ class Purify(Description):
     return s
 
 class Dry(Description):
-  def __init__(self, node: Node):
+  def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])

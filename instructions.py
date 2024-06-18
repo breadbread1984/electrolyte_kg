@@ -43,12 +43,12 @@ class Instructions(object):
           # if the added material is one of rectant
           precursor = precursors[reactant_idx]
           reactant_idx += 1
-          instructions.append(self.ops_types[ops_type](step, precursor).to_string())
+          instructions.append(self.ops_types[ops_type](step, self.driver, precursor).to_string())
         else:
           # if the added material is just a solvent
           records, summary, keys = self.driver.execute_query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'], database_ = self.database)
           assert len(records) == 1
-          instructions.append(self.ops_types[ops_type](step, records[0]['material']['name']).to_string())
+          instructions.append(self.ops_types[ops_type](step, self.driver, records[0]['material']['name']).to_string())
       elif ops_type == 'Device':
         if step['device'] == 'ICP':
           # replace ICP reading
@@ -59,9 +59,9 @@ class Instructions(object):
           params['unit'] = 'mol'
         else:
           params = None
-        instructions.append(self.ops_types[ops_type](step, params).to_string())
+        instructions.append(self.ops_types[ops_type](step, self.driver, params).to_string())
       else:
-        instructions.append(self.ops_types[ops_type](step).to_string())
+        instructions.append(self.ops_types[ops_type](step, self.driver).to_string())
 
     return instructions
 
