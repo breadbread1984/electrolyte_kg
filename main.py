@@ -21,6 +21,7 @@ def main(unused_argv):
   exp = Instructions(host = FLAGS.host, username = FLAGS.user, password = FLAGS.password, db = FLAGS.db)
   for idx, precursors in enumerate(precursor_sets):
     instructions = exp.steps(FLAGS.target, precursors)
+    if instructions is None: continue
     print('第%d种实验\n', instructions)
 
 if __name__ == "__main__":
