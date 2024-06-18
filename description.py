@@ -12,7 +12,7 @@ class Description(ABC):
     raise NotImplementedError
 
 class ContainerPreparation(Description):
-    def __init__(self, node: Node, query: partial):
+  def __init__(self, node: Node, query: partial):
     self.node = node
   def to_string(self,):
     params = json.loads(self.node['params'])
