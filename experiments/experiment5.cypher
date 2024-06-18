@@ -65,7 +65,7 @@ match (a {id: "c60d262e-2d1e-11ef-941b-d7323080b519"}),
       (b {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa"})
 merge (a)-[:NEXT]->(b);
 
-merge (d: `Glove Box Operation` {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca", type: "material add", amount: "8.6", unit: "g", target: "c1", param: "{\"atmosphere\":\"argon\"}"});
+merge (d: `Glove Box Operation` {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca", type: "material add", amount: "8.6", unit: "g", target: "c1", params: "{\"atmosphere\":\"argon\"}"});
 match (a {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa"}),
       (b {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"})
 merge (a)-[:NEXT]->(b);
