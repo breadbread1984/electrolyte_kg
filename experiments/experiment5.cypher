@@ -70,7 +70,7 @@ match (a {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa"}),
       (b {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"})
 merge (a)-[:NEXT]->(b);
 
-merge (a {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"}),
+match (a {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"}),
       (b {smiles: "Cc1ccccc1"})
 merge (a)-[:USES]->(b);
 
