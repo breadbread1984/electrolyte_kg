@@ -78,6 +78,11 @@ class GloveBoxOperation(Description):
       records, summary, keys = self.query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
       assert len(records) == 1
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{records[0]['name']}。"
+    elif self.node['type'] == 'purify':
+      if params['method'] == 'precipitation':
+        s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行沉淀，然后去除{params['remove']}。"
+      else:
+        raise Exception('unknown purify method!')
     else:
       raise Exception('unknown Glove Box operation!')
     return s
