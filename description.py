@@ -60,6 +60,7 @@ class Device(Description):
 class GloveBoxOperation(Description):
   def __init__(self, node: Node, query: partial):
     self.node = node
+    self.query = query
   def to_string(self,):
     params = json.loads(self.node['params'])
     if self.node['type'] == 'moving':
@@ -74,7 +75,7 @@ class GloveBoxOperation(Description):
     elif self.node['type'] == 'cooling':
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行冷却，到室温。"
     elif self.node['type'] == 'add material':
-      records, summary, keys = query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
+      records, summary, keys = self.query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
       assert len(records) == 1
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{records[0]['name']}。"
     else:
