@@ -155,7 +155,7 @@ match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
       (b {smiles: "[Li+].[Li+].[S-2]"})
 merge (a)-[:USE_PRECURSOR]->(b);
 match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
-      (b {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"}),
+      (b {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"})
 merge (a)-[:USE_PRECURSOR]->(b);
 match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
       (b {smiles: "[Li+].[Br-]"})
