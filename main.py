@@ -22,7 +22,9 @@ def main(unused_argv):
   for idx, precursors in enumerate(precursor_sets):
     instructions = exp.steps(FLAGS.target, precursors)
     if instructions is None: continue
-    print('第%d种实验\n', instructions)
+    print('第%d种实验方案:\n' % (idx + 1))
+    for sid, step in enumerate(instructions):
+      print('%d)%s' % (sid, step))
 
 if __name__ == "__main__":
   add_options()
