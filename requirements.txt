@@ -1,0 +1,4 @@
+reaction_path @ https://github.com/breadbread1984/reaction_path
+neo4j
+pymatgen
+numpy
