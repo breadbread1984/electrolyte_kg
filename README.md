@@ -4,14 +4,21 @@ this project represents electrolyte preparation experiments with graph database.
 
 # Usage
 
+## install prerequisite
+
+```shell
+python3 -m pip install -r requirements.txt
+```
+
 ## restore data
 
 ```shell
 bash restore.sh
 ```
 
-## test experiment instruction generation
+## generate experiment steps
 
 ```shell
-python3 instructions.py
+python3 main.py --target <formula of electrolyte>
 ```
+
