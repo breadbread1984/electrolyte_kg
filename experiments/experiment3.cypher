@@ -60,7 +60,12 @@ match (a {id: "62a6c0ca-2956-11ef-bc40-eb3a741d00fd"}),
       (b {id: "0ca30986-2965-11ef-a59d-df0aa44bd4c7"})
 merge (a)-[r:NEXT]->(b);
 
-merge (e: Experiment {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335", first_step: "211cf444-2951-11ef-a224-1335ae9455e7", last_step: "0ca30986-2965-11ef-a59d-df0aa44bd4c7"});
+merge (d: Device {id: "6fbb4616-2d0f-11ef-a59b-f72530256bf7", device: "ICP", target: "c1", params: "{\"elements\":\"Li:S:P:Cl\",\"proportion\":\"5.40:4.45:1.00:1.70\",\"unit\":\"mol\"}"});
+match (a {id: "0ca30986-2965-11ef-a59d-df0aa44bd4c7"}),
+      (b {id: "6fbb4616-2d0f-11ef-a59b-f72530256bf7"})
+merge (a)-[r:NEXT]->(b);
+
+merge (e: Experiment {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335", first_step: "211cf444-2951-11ef-a224-1335ae9455e7", last_step: "6fbb4616-2d0f-11ef-a59b-f72530256bf7"});
 match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
       (b {id: "211cf444-2951-11ef-a224-1335ae9455e7"})
 merge (a)-[r:INCLUDE_STEP]->(b);
@@ -87,6 +92,9 @@ match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
 merge (a)-[r:INCLUDE_STEP]->(b);
 match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
       (b {id: "0ca30986-2965-11ef-a59d-df0aa44bd4c7"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),
+      (b {id: "6fbb4616-2d0f-11ef-a59b-f72530256bf7"})
 merge (a)-[r:INCLUDE_STEP]->(b);
 
 match (a {id: "bcd90ddc-2965-11ef-adb5-8f2d09928335"}),

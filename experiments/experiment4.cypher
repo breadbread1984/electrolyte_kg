@@ -61,7 +61,12 @@ match (a: Seal {id: "4f8e5a80-2c48-11ef-992a-3325db096ccb"}),
       (b: Purify {id: "71549f66-2c49-11ef-afb6-7f033da321e0"})
 merge (a)-[:NEXT]->(b);
 
-merge (e: Experiment {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9", first_step: "000faa8a-2a28-11ef-b39f-fbe6d6d8c705", last_step: "71549f66-2c49-11ef-afb6-7f033da321e0"});
+merge (a: Device {id: "f2abc5b4-2d0f-11ef-9dcc-f3279486002c", device: "ICP", target: "c2", params: "{\"elements\":\"Li:S:P:Cl\",\"proportion\":\"5.40:4.45:1.00:1.70\",\"unit\":\"mol\"}"});
+match (a: Purify {id: "71549f66-2c49-11ef-afb6-7f033da321e0"}),
+      (b: Device {id: "f2abc5b4-2d0f-11ef-9dcc-f3279486002c"})
+merge (a)-[:NEXT]->(b);
+
+merge (e: Experiment {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9", first_step: "000faa8a-2a28-11ef-b39f-fbe6d6d8c705", last_step: "f2abc5b4-2d0f-11ef-9dcc-f3279486002c"});
 match (a {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9"}),
       (b {id: "000faa8a-2a28-11ef-b39f-fbe6d6d8c705"})
 merge (a)-[r:INCLUDE_STEP]->(b);
@@ -91,6 +96,9 @@ match (a {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9"}),
 merge (a)-[r:INCLUDE_STEP]->(b);
 match (a {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9"}),
       (b {id: "71549f66-2c49-11ef-afb6-7f033da321e0"})
+merge (a)-[r:INCLUDE_STEP]->(b);
+match (a {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9"}),
+      (b {id: "f2abc5b4-2d0f-11ef-9dcc-f3279486002c"})
 merge (a)-[r:INCLUDE_STEP]->(b);
 
 match (a {id: "6e3248e6-2c4a-11ef-96df-e390002dcff9"}),
