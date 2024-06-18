@@ -91,7 +91,7 @@ class GloveBoxOperation(Description):
       else:
         raise Exception('unknown collect method!')
     else:
-      raise Exception('unknown Glove Box operation!')
+      raise Exception('unknown Glove Box operation: %s!' % self.node['type'])
     return s
 
 class Collect(Description):
