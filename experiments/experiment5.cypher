@@ -104,4 +104,65 @@ match (a {id: "0544e850-2d41-11ef-8e3f-231ca3cfccf3"}),
       (b {id: "e397c8c8-2d43-11ef-af9f-4fb626e0d8a4"})
 merge (a)-[:NEXT]->(b);
 
+merge (e: Experiment {id: "6d01b882-2d4c-11ef-a880-c347003465c5", first_step: "1020cf12-2d1b-11ef-8a86-97701c4108ae", last_step: "e397c8c8-2d43-11ef-af9f-4fb626e0d8a4"});
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "1020cf12-2d1b-11ef-8a86-97701c4108ae"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "8b84b8b2-2d1b-11ef-ac81-0f8af50af53e"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "f6443b14-2d1b-11ef-8e0a-b3f1d15bebae"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "931daea2-2d1c-11ef-8cac-4f306d0a3ddf"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "5a107fbc-2d1d-11ef-b5c6-bf6269e55327"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "fa24a848-2d1d-11ef-b62b-fbcf00e9574d"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "c60d262e-2d1e-11ef-941b-d7323080b519"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "43b74cf8-2d1f-11ef-a03b-9bd27ebe0cfa"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "f8235e7a-2d1f-11ef-8b42-170abba303ca"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "a125bab0-2d41-11ef-aabc-5f184f9d0c2f"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "2d06fe2c-2d42-11ef-ad55-b3df7c73bb93"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "1c6687fc-2d3f-11ef-8559-1fc41a24e17f"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "0544e850-2d41-11ef-8e3f-231ca3cfccf3"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {id: "e397c8c8-2d43-11ef-af9f-4fb626e0d8a4"})
+merge (a)-[:INCLUDE_STEP]->(b);
 
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {smiles: "[Li+].[Li+].[S-2]"})
+merge (a)-[:USE_PRECURSOR]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {smiles: "P12(=S)SP3(=S)SP(=S)(S1)SP(=S)(S2)S3"}),
+merge (a)-[:USE_PRECURSOR]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {smiles: "[Li+].[Br-]"})
+merge (a)-[:USE_PRECURSOR]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {smiles: "[Li+].[I-]"})
+merge (a)-[:USE_PRECURSOR]->(b);
+match (a {id: "6d01b882-2d4c-11ef-a880-c347003465c5"}),
+      (b {smiles: "[Mn]S"})
+merge (a)-[:USE_PRECURSOR]->(b);
