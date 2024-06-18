@@ -19,6 +19,6 @@ bash restore.sh
 ## generate experiment steps
 
 ```shell
-python3 main.py --target <formula of electrolyte>
+python3 main.py --target <formula of electrolyte> [--host <host>] [--user <user>] [--password <password>] [--db <db>]
 ```
 
