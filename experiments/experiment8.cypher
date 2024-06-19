@@ -30,3 +30,14 @@ match (a {id: "343a369c-2e09-11ef-b3f6-b7da7d008c97"}),
       (b {id: "f902ee34-2e08-11ef-bb2b-47dc259bd3e9"})
 merge (a)-[:NEXT]->(b);
 
+merge (a: `Glove Box Operation` {id: "56da5296-2e0d-11ef-98eb-4f1974834066", type: "heating", target: "c2", params: "{\"atmoshpere\":\"nitrogen\",\"temperature\":435,\"unit\":\"C\",\"warmup seconds\":300,\"warmup rate\":\"100/min\",\"duration seconds\":72000}"});
+match (a {id: "f902ee34-2e08-11ef-bb2b-47dc259bd3e9"}),
+      (b {id: "56da5296-2e0d-11ef-98eb-4f1974834066"})
+merge (a)-[:NEXT]->(b);
+
+merge (a: Device {id: "3d47468a-2e0e-11ef-8a7e-a33d81a675c5", device: "ICP", target: "c2", params: "{\"elements\":\"Li:N:Cl\",\"proportion\":\"18:4:6\",\"unit\":\"mol\"}"});
+match (a {id: "56da5296-2e0d-11ef-98eb-4f1974834066"}),
+      (b {id: "3d47468a-2e0e-11ef-8a7e-a33d81a675c5"})
+merge (a)-[:NEXT]->(b);
+
+
