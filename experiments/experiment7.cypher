@@ -45,4 +45,22 @@ match (a {id: "c9e7b670-2de5-11ef-9262-b3854147656f"}),
       (b {id: "2be38494-2de6-11ef-ab02-d36d4e5ae197"})
 merge (a)-[:NEXT]->(b);
 
+merge (d: `Glove Box Operation` {id: "5130b554-2de7-11ef-b5a0-b355c9a2c46a", type: "quenching", target: "c2", params: "{\"atmosphere\":\"argon\",\"method\":\"pressed by two liquid nitrogen colled graphite plates\"}"});
+match (a {id: "2be38494-2de6-11ef-ab02-d36d4e5ae197"}),
+      (b {id: "5130b554-2de7-11ef-b5a0-b355c9a2c46a"})
+merge (a)-[:NEXT]->(b);
 
+merge (d: `Glove Box Operation` {id: "b036be22-2e00-11ef-ba49-77ff779dce0e", type: "annealing", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\":550,\"unit\":\"C\",\"insulation seconds\":36000,\"cooldown rate\":\"5/hr\"}"});
+match (a {id: "5130b554-2de7-11ef-b5a0-b355c9a2c46a"}),
+      (b {id: "b036be22-2e00-11ef-ba49-77ff779dce0e"})
+merge (a)-[:NEXT]->(b);
+
+merge (d: Device {id: "ca5f85a2-2e02-11ef-beae-0b922d744aee", device: "ICP", target: "c2", params: "{\"elements\":\"Zn:Li:Cl\", \"proportion\":\"3:2:8\",\"unit\":\"mol\"}"});
+match (a {id: "b036be22-2e00-11ef-ba49-77ff779dce0e"}),
+      (b {id: "ca5f85a2-2e02-11ef-beae-0b922d744aee"})
+merge (a)-[:NEXT]->(b);
+
+merge (e: Experiment {id: "47f3f6f6-2e03-11ef-ac68-97fa77c6c66d", first_step: "29848336-2dde-11ef-84ac-ab313c0b2491", last_step: "ca5f85a2-2e02-11ef-beae-0b922d744aee"});
+match (a {id: "47f3f6f6-2e03-11ef-ac68-97fa77c6c66d"}),
+      (b {id: "29848336-2dde-11ef-84ac-ab313c0b2491"})
+merge (a)-[:INCLUDE_STEP]->(b);
