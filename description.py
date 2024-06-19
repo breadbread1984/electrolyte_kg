@@ -90,6 +90,8 @@ class GloveBoxOperation(Description):
         raise Exception('unknown collect method!')
     elif self.node['type'] == 'quenching':
       s = f"在{params['atmosphere']}环境的Glove Box中采用{params['method']}方法对容器{self.node['target']}中的样本进行淬冷。"
+    elif self.node['type'] == 'annealing':
+      s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}中的样本进行退火处理，退火温度为{self.node['temperature']}{self.node['unit']}，保温时间为{self.node['insulation seconds']}秒，然后以{self.node['cooldown rate']}速度降到室温。"
     else:
       raise Exception('unknown Glove Box operation: %s!' % self.node['type'])
     return s
