@@ -87,7 +87,7 @@ class GloveBoxOperation(Description):
       elif params['method'] == 'press':
         s = f"在{params['atmosphere']}环境的Glove Box中从容器{self.node['source']}中提取{params['sheet number']}份，每份重量为{params['sheet weight']}{params['sheet weight unit']}的样本，每份压成薄片并转移到容器{self.node['target']}。"
       elif params['method'] == 'tableting':
-        s = f"在{params['atmosphere']}环境的Glove Box中从容器{self.node['source']}中取出样本用{params['pressure']}{params['pressure unit']}压力压成片，片的厚度为{params['thickness']}{params['unit']}，直径为{params['diameter']}{params['unit']}。"
+        s = f"在{params['atmosphere']}环境的Glove Box中从容器{self.node['source']}中取出样本用{params['pressure']}{params['pressure unit']}压力压成片，片的厚度为{params['thickness']}{params['unit']}，直径为{params['diameter']}{params['unit']}。将这些片状样本转移到容器{self.node['target']}。"
       else:
         raise Exception('unknown collect method!')
     elif self.node['type'] == 'quenching':
