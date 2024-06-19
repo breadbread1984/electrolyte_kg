@@ -36,7 +36,7 @@ class Device(Description):
     self.params = params
   def to_string(self,):
     params = json.loads(self.node['params'])
-    if self.node['device'] == 'planetary ball mill':
+    if self.node['device'] in {'planetary ball mill','agate mortar and pestle mill'}:
       s = f"采用planetary ball mill对容器{self.node['target']}内的样本进行研磨，研磨转速为{params['rpm']}rpm，研磨时间为{params['seconds']}秒。"
     elif self.node['device'] == 'roller mill':
       s = f"向容器{self.node['target']}加入{params['bead material']}材质的滚磨珠，滚磨珠重量为{params['bead weight']}{params['bead weight unit']}，滚磨珠的直径为{params['bead size']}{params['bead size unit']}，然后通过roller mill对容器{self.node['target']}内的样本进行研磨，研磨转速为{params['rpm']}rpm，研磨时间为{params['seconds']}秒。"
