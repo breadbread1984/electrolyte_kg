@@ -66,4 +66,38 @@ match (a {id: "c7aec028-2dd7-11ef-a717-4bbe685f9e83"}),
 merge (a)-[:NEXT]->(b);
 
 merge (e: Experiment {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9", first_step: "f3ed3322-2d5f-11ef-b156-434811f987b8", last_step: "dee5d3ec-2dd9-11ef-bdee-433169f49b15"});
-match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"})
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "f3ed3322-2d5f-11ef-b156-434811f987b8"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "28e1df1a-2d60-11ef-83f1-ebfe6b109b82"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "e4816c68-2d60-11ef-949a-876ae2e928b4"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "6e317106-2d61-11ef-9e96-3b6735b32ca8"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "54d5756c-2d62-11ef-8019-afa201d5857a"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "08c1490c-2d63-11ef-96e1-67fd393d80f9"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "de20b66e-2d63-11ef-8776-3bcce782ba11"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "b8c1e870-2d63-11ef-830d-4b70818a5967"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "401928ac-2dd6-11ef-b7b3-372ab7e59fb9"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "c7aec028-2dd7-11ef-a717-4bbe685f9e83"})
+merge (a)-[:INCLUDE_STEP]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {id: "dee5d3ec-2dd9-11ef-bdee-433169f49b15"})
+merge (a)-[:INCLUDE_STEP]->(b);
+
+
