@@ -69,10 +69,7 @@ class Instructions(object):
 
 if __name__ == "__main__":
   exp = Instructions(password = '19841124')
-  instructions = exp.steps('Li6PS5Cl', ['Li2O','Li2S','Li3PO4','LiCl'])
-  for idx, instruction in enumerate(instructions):
-    print(f"{idx}: {instruction}")
-  instructions = exp.steps('Li3.64M0.012S4P', ['Li2S','P2S5','LiBr','LiI','MnS'])
+  instructions = exp.steps('Li4Zn6Cl16', ['ZnCl2','LiCl'])
   for idx, instruction in enumerate(instructions):
     print(f"{idx}: {instruction}")
 
