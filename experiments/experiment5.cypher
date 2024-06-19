@@ -89,7 +89,7 @@ match (a {id: "2d06fe2c-2d42-11ef-ad55-b3df7c73bb93"}),
       (b {id: "1c6687fc-2d3f-11ef-8559-1fc41a24e17f"})
 merge (a)-[:NEXT]->(b);
 
-merge (d: `Glove Box Operation` {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd", type: "heating", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\":80,\"unit\":\"C\",\"warmup seconds\":\"none\",\"warmup rate\":\"none\",\"duration seconds\":\"10800\"}"});
+merge (d: `Glove Box Operation` {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd", type: "heating", target: "c2", params: "{\"atmosphere\":\"argon\",\"temperature\":80,\"unit\":\"C\",\"warmup seconds\":\"none\",\"warmup rate\":\"none\",\"duration seconds\":10800}"});
 match (a {id: "1c6687fc-2d3f-11ef-8559-1fc41a24e17f"}),
       (b {id: "769c9078-2d3e-11ef-8ad5-7be1b899f0bd"})
 merge (a)-[:NEXT]->(b);
