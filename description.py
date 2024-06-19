@@ -120,9 +120,9 @@ class Purify(Description):
     elif self.node['method'] == 'calcination':
       s = f"对容器{self.node['target']}进行煅烧，煅烧在温度{params['temperature']}{params['unit']}持续{params['seconds']}秒。"
       if 'warmup rate' in params:
-        s += "升温速度为{params['warmup rate']}。"
+        s += f"升温速度为{params['warmup rate']}。"
       if 'cooldown rate' in params:
-        s += "冷却速度为{params['cooldown rate']}。"
+        s += f"冷却速度为{params['cooldown rate']}。"
     else:
       raise Exception('unknown purify method!')
     return s
