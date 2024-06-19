@@ -88,6 +88,8 @@ class GloveBoxOperation(Description):
         s = f"在{params['atmosphere']}环境的Glove Box中从容器{self.node['source']}中提取{params['sheet number']}份，每份重量为{params['sheet weight']}{params['sheet weight unit']}的样本，每份压成薄片并转移到容器{self.node['target']}。"
       else:
         raise Exception('unknown collect method!')
+    elif self.node['type'] == 'quenching':
+      s = f"在{params['atmosphere']}环境的Glove Box中采用{params['method']}方法对容器{self.node['target']}中的样本进行淬冷。"
     else:
       raise Exception('unknown Glove Box operation: %s!' % self.node['type'])
     return s
