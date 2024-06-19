@@ -50,4 +50,20 @@ match (a {id: "de20b66e-2d63-11ef-8776-3bcce782ba11"}),
       (b {id: "b8c1e870-2d63-11ef-830d-4b70818a5967"})
 merge (a)-[:NEXT]->(b);
 
+merge (a: `Glove Box Operation` {id: "401928ac-2dd6-11ef-b7b3-372ab7e59fb9", type: "sealing", target: "c2", params: "{\"atmosphere\":\"vaccuum\",\"method\":\"tube sealing machine\"}"});
+match (a {id: "b8c1e870-2d63-11ef-830d-4b70818a5967"}),
+      (b {id: "401928ac-2dd6-11ef-b7b3-372ab7e59fb9"})
+merge (a)-[:NEXT]->(b);
 
+merge (a: Purify {id: "c7aec028-2dd7-11ef-a717-4bbe685f9e83", target: "c2", method: "calcination", params: "{\"temperature\":260,\"unit\":\"C\",\"seconds\": 36000,\"warmup rate\":\"2/min\",\"cooldown rate\":\"2/min\"}"});
+match (a {id: "401928ac-2dd6-11ef-b7b3-372ab7e59fb9"}),
+      (b {id: "c7aec028-2dd7-11ef-a717-4bbe685f9e83"})
+merge (a)-[:NEXT]->(b);
+
+merge (a: Device {id: "dee5d3ec-2dd9-11ef-bdee-433169f49b15", device: "ICP", target: "c2", params: "{\"elements\":\"Li:Y:In:Cl\", \"proportion\":\"3:0.8:0.2:6\",\"unit\":\"mol\"}"});
+match (a {id: "c7aec028-2dd7-11ef-a717-4bbe685f9e83"}),
+      (b {id: "dee5d3ec-2dd9-11ef-bdee-433169f49b15"})
+merge (a)-[:NEXT]->(b);
+
+merge (e: Experiment {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9", first_step: "f3ed3322-2d5f-11ef-b156-434811f987b8", last_step: "dee5d3ec-2dd9-11ef-bdee-433169f49b15"});
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"})
