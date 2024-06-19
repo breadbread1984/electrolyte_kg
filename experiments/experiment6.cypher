@@ -100,4 +100,12 @@ match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
       (b {id: "dee5d3ec-2dd9-11ef-bdee-433169f49b15"})
 merge (a)-[:INCLUDE_STEP]->(b);
 
-
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {smiles: "[Li+].[Cl-]"})
+merge (a)-[:USE_PRECURSOR]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {smiles: "[Cl-].[Cl-].[Cl-].[Y+3]"})
+merge (a)-[:USE_PRECURSOR]->(b);
+match (a {id: "3d476120-2ddb-11ef-ac9a-3b7741595eb9"}),
+      (b {smiles: "[Cl-].[Cl-].[Cl-].[In+3]"})
+merge (a)-[:USE_PRECURSOR]->(b);
