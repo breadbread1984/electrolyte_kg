@@ -30,7 +30,7 @@ match (a {id: "6e317106-2d61-11ef-9e96-3b6735b32ca8"}),
       (b {smiles: "[Cl-].[Cl-].[Cl-].[In+3]"})
 merge (a)-[:USES]->(b);
 
-merge (a: `Glove Box Operation` {id: "54d5756c-2d62-11ef-8019-afa201d5857a", type: "sealing", target: "c1", params: "{\"atmospherer\": \"vaccuum\",\"method\":\"rubber sealing gasket\"}"});
+merge (a: `Glove Box Operation` {id: "54d5756c-2d62-11ef-8019-afa201d5857a", type: "sealing", target: "c1", params: "{\"atmosphere\": \"vaccuum\",\"method\":\"rubber sealing gasket\"}"});
 match (a {id: "6e317106-2d61-11ef-9e96-3b6735b32ca8"}),
       (b {id: "54d5756c-2d62-11ef-8019-afa201d5857a"})
 merge (a)-[:NEXT]->(b);
