@@ -27,7 +27,7 @@ class MaterialAdd(Description):
     self.node = node
     self.smiles = smiles
   def to_string(self,):
-    s = f"向容器{self.node['target']}添加前体物质{self.smiles}。"
+    s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{self.smiles}。"
     return s
 
 class Device(Description):
