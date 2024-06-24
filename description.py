@@ -23,11 +23,17 @@ class ContainerPreparation(Description):
     return s
 
 class MaterialAdd(Description):
-  def __init__(self, node: Node, query: partial, smiles: str):
+  def __init__(self, node: Node, query: partial, smiles: str = None):
     self.node = node
     self.smiles = smiles
+    self.query = query
   def to_string(self,):
-    s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{self.smiles}。"
+    if self.smiles is None:
+      records, summary, keys = self.query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = self.node['id'])
+      assert len(records) == 1
+      s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{records[0]['b']['name']}。"
+    else:
+      s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{self.smiles}。"
     return s
 
 class Device(Description):
@@ -56,9 +62,10 @@ class Device(Description):
     return s
 
 class GloveBoxOperation(Description):
-  def __init__(self, node: Node, query: partial):
+  def __init__(self, node: Node, query: partial, smiles: str = None):
     self.node = node
     self.query = query
+    self.smiles = smiles
   def to_string(self,):
     params = json.loads(self.node['params'])
     if self.node['type'] == 'moving':
@@ -73,9 +80,12 @@ class GloveBoxOperation(Description):
     elif self.node['type'] == 'cooling':
       s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行冷却，到室温。"
     elif self.node['type'] == 'material add':
-      records, summary, keys = self.query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
-      assert len(records) == 1
-      s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{records[0]['b']['name']}。"
+      if self.smiles is None:
+        records, summary, keys = self.query('match (a {id: $sid})-[:USES]->(b: Material) return b', sid = self.node['id'])
+        assert len(records) == 1
+        s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{records[0]['b']['name']}。"
+      else:
+        s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}的{self.smiles}。"
     elif self.node['type'] == 'purify':
       if params['method'] == 'precipitation':
         s = f"在{params['atmosphere']}环境的Glove Box中对容器{self.node['target']}进行沉淀，然后去除{params['remove']}。"

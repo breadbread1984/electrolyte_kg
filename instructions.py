@@ -42,15 +42,24 @@ class Instructions(object):
         records, summary, keys = query('match (a {id: $sid})-[:USES]->(m: Material), (e: Experiment)-[:USE_PRECURSOR]->(m), (e)-[:INCLUDE_STEP]->(a) return count(e) as exp_num', sid = step['id'])
         assert len(records) == 1
         if records[0]['exp_num'] == 1:
-          # if the added material is one of rectant
+          # if the added material is one of reactant
           precursor = precursors[reactant_idx]
           reactant_idx += 1
           instructions.append(self.ops_types[ops_type](step, query, precursor).to_string())
         else:
           # if the added material is just a solvent
-          records, summary, keys = query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = step['id'])
-          assert len(records) == 1
-          instructions.append(self.ops_types[ops_type](step, query, records[0]['material']['name']).to_string())
+          instructions.append(self.ops_types[ops_type](step, query).to_string())
+      elif ops_type == 'Glove Box Operation' and step['type'] == 'material add':
+        records, summary, keys = query('match (a {id: $sid})-[:USES]->(m: Material), (e: Experiment)-[:USE_PRECURSOR]->(m), (e)-[:INCLUDE_STEP]->(a) return count(e) as exp_num', sid = step['id'])
+        assert len(records) == 1
+        if records[0]['exp_num'] == 1:
+          # if the added material is one of reactant
+          precursor = precursors[reactant_idx]
+          reactant_idx += 1
+          instructions.append(self.ops_types[ops_type](step, query, precursor).to_string())
+        else:
+          # if the added material is just a solvent
+          instructions.append(self.ops_types[ops_type](step, query).to_string())
       elif ops_type == 'Device':
         if step['device'] == 'ICP':
           # replace ICP reading
