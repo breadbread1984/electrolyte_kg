@@ -31,7 +31,7 @@ class MaterialAdd(Description):
     if self.smiles is None:
       records, summary, keys = self.query('match (a {id: $sid})-[r:USES]->(b: Material) return b as material', sid = self.node['id'])
       assert len(records) == 1
-      s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{records[0]['b']['name']}。"
+      s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{records[0]['material']['name']}。"
     else:
       s = f"向容器{self.node['target']}添加{self.node['amount']}{self.node['unit']}前体物质{self.smiles}。"
     return s
