@@ -10,15 +10,9 @@ this project represents electrolyte preparation experiments with graph database.
 python3 -m pip install -r requirements.txt
 ```
 
-## restore data
-
-```shell
-bash restore.sh
-```
-
 ## generate experiment steps
 
 ```shell
-python3 main.py --target <formula of electrolyte> [--host <host>] [--user <user>] [--password <password>] [--db <db>]
+python3 main.py --model (llama3|codellama|qwen2|codeqwen|qwen1.5) --target <formula of electrolyte> [--locally]
 ```
 
