@@ -53,7 +53,7 @@ Below are a number of examples of given precursors, target electrolyte and their
 precursors: {precursors}
 target: {target}""" % instructions
   messages = [
-    {'role': 'system', 'content': system_prompt},
+    {'role': 'system', 'content': system_prompts},
     {'role': 'user', 'content': human_prompts}
   ]
   prompt = tokenizer.apply_chat_template(messages, tokenize = False, add_generation_prompt = True)
