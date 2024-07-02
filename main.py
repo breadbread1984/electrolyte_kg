@@ -28,7 +28,8 @@ def main(unused_argv):
   template, parser = exp_instruction_prompt(tokenizer)
   chain = template | llm | parser
   for idx, precursors in enumerate(precursor_sets):
-    pass
+    steps = chain.invoke({'precursors': ','.join(precursors), 'target': FLAGS.target})
+    print(steps)
 
 if __name__ == "__main__":
   add_options()
