@@ -2,7 +2,6 @@
 
 from absl import flags, app
 from reaction_path import PrecursorsRecommendation
-from instructions import Instructions
 from prompts import exp_instruction_prompt
 from models import Llama3, CodeLlama, Qwen2, CodeQwen1_5, Qwen1_5
 
