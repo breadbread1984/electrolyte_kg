@@ -17,7 +17,7 @@ def Llama3(locally = False):
       device = 0,
       pipeline_kwargs = {
         "max_length": 8192,
-        "do_sample": False,
+        "do_sample": True,
         "temperature": 0.6,
         "top_p": 0.9,
         "eos_token_id": [tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|eot_id|>")],
@@ -30,7 +30,7 @@ def Llama3(locally = False):
     llm = HuggingFaceEndpoint(
       endpoint_url = "meta-llama/Meta-Llama-3-8B-Instruct",
       task = "text-generation",
-      do_sample = False,
+      do_sample = True,
       temperature = 0.6,
       top_p = 0.9,
     )
@@ -46,7 +46,7 @@ def CodeLlama(locally = False):
       device = 0,
       pipeline_kwargs = {
         "max_length": 16384,
-        "do_sample": False,
+        "do_sample": True,
         "temperature": 0.8,
         "top_p": 0.8,
         "use_cache": True,
@@ -58,7 +58,7 @@ def CodeLlama(locally = False):
     llm = HuggingFaceEndpoint(
       endpoint_url = 'meta-llama/CodeLlama-7b-Instruct-hf',
       task = 'text-generation',
-      do_sample = False,
+      do_sample = True,
       temperature = 0.8,
       top_p = 0.8,
       use_cache = True
@@ -75,7 +75,7 @@ def Qwen2(locally = False):
       device = 0,
       pipeline_kwargs = {
         "max_length": 131072,
-        "do_sample": False,
+        "do_sample": True,
         "temperature": 0.8,
         "top_p": 0.8,
         "use_cache": True,
@@ -87,7 +87,7 @@ def Qwen2(locally = False):
     llm = HuggingFaceEndpoint(
       endpoint_url = 'Qwen/Qwen2-7B-Instruct',
       task = 'text-generation',
-      do_sample = False,
+      do_sample = True,
       temperature = 0.8,
       top_p = 0.8,
     )
@@ -103,7 +103,7 @@ def CodeQwen1_5(locally = False):
       device = 0,
       pipeline_kwargs = {
         "max_length": 65536,
-        "do_sample": False,
+        "do_sample": True,
         "temperature": 0.8,
         "top_p": 0.8,
         "use_cache": True,
@@ -115,7 +115,7 @@ def CodeQwen1_5(locally = False):
     llm = HuggingFaceEndpoint(
       endpoint_url = 'Qwen/CodeQwen1.5-7B-Chat',
       task = 'text-generation',
-      do_sample = False,
+      do_sample = True,
       temperature = 0.8,
       top_p = 0.8,
     )
@@ -131,7 +131,7 @@ def Qwen1_5(locally = False):
       device = 0,
       pipeline_kwargs = {
         "max_length": 32768,
-        "do_sample": False,
+        "do_sample": True,
         "temperature": 0.8,
         "top_p": 0.8,
         "use_cache": True,
@@ -143,7 +143,7 @@ def Qwen1_5(locally = False):
     llm = HuggingFaceEndpoint(
       endpoint_url = 'Qwen/Qwen1.5-14B-Chat',
       task = 'text-generation',
-      do_sample = False,
+      do_sample = True,
       temperature = 0.8,
       top_p = 0.8,
     )
