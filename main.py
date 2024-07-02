@@ -7,9 +7,9 @@ from instructions import Instructions
 FLAGS = flags.FLAGS
 
 def add_options():
-  flags.DEFINE_string('host', default = 'neo4j+s://ce5c573a.databases.neo4j.io:7687', help = 'neo4j host')
+  flags.DEFINE_string('host', default = 'bolt://localhost:7687', help = 'neo4j host')
   flags.DEFINE_string('user', default = 'neo4j', help = 'user name')
-  flags.DEFINE_string('password', default = 'RdKzW-YnyyRd5h1Q6OoRQUDza5edKXrmqDzSTN7QkZg', help = 'password')
+  flags.DEFINE_string('password', default = 'neo4j', help = 'password')
   flags.DEFINE_string('db', default = 'neo4j', help = 'database')
   flags.DEFINE_string('target', default = 'Li6PS5Cl', help = 'electrolyte represented in format of chemical formula')
 
