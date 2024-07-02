@@ -15,7 +15,7 @@ def exp_instruction_prompt(tokenizer):
     )
   parser = JsonOutputParser(pydantic_object = UnstructuredSteps)
   examples = [
-      {
+    {
         "precursors" : ["Li2O","Li2S","Li3PO4","LiCl"],
         "target": "Li6PS5Cl",
         "steps": [
@@ -35,8 +35,8 @@ def exp_instruction_prompt(tokenizer):
           "采用X-ray diffraction(XRD)设备对容器c2内的样品进行检测，结果2θ应该在15.6°,18.0°,25.6°,30.1°,31.5°,45.2°产生峰值。",
           "采用inductively coupled plasma spectrometer(ICP)设备对容器c2内的样本进行检测，结果需要显示Li:P:S:Cl元素按照单位mol计算的比例应该为6.0:1.0:5.0:1.0。"
         ]
-      }
-    ]
+    }
+  ]
   instructions = parser.get_format_instructions()
   instructions = instructions.replace('{','{{')
   instructions = instructions.replace('}','}}')
