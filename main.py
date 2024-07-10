@@ -29,7 +29,8 @@ def main(unused_argv):
   for idx, precursors in enumerate(precursor_sets):
     print("实验方案%d" % (idx + 1))
     steps = chain.invoke({'precursors': ','.join(precursors), 'target': FLAGS.target})
-    print(steps)
+    for step_id,step in enumerate(steps['steps']):
+      print('%d) %s' % (step_id + 1, step))
 
 if __name__ == "__main__":
   add_options()
